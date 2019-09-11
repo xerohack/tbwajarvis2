@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use App\User;
 
 class UsersTableSeeder extends Seeder
 {
@@ -12,7 +13,20 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
+
+        User::create(
+            [
+                'rut' => '11111111-1',
+                'nombre' => 'admin',
+                'apellido' => 'admin2',
+                'cargo' => 'administrador',
+                'rol' => 'usuario-admin',
+                'email' => 'admin@tbwa.cl',
+                'password' => bcrypt('12341234'),
+            ]
+        );
+
+        /* DB::table('users')->insert([
             'rut' => '11111111-1',
             'nombre' => 'admin',
             'apellido' => 'admin2',
@@ -20,7 +34,7 @@ class UsersTableSeeder extends Seeder
             'rol' => 'usuario-admin',
             'email' => 'admin@tbwa.cl',
             'password' => bcrypt('12341234'),
-        ]);
+        ]); */
         /* DB::table('users')->insert([
             'nombre' => 'francisco',
             'email' => 'francisco@bbrave.cl',
