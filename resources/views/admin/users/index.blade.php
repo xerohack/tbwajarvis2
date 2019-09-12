@@ -16,6 +16,7 @@
 
 				<!-- Default box -->
 				<div class="box">
+                        @include('flash::message')
 					<div class="box-header with-border">
 						<h3 class="box-title">Usuarios</h3>
 
@@ -51,8 +52,8 @@
                                     <td>{{$user->cargo}}</td>
                                     <td>{{$user->rol}}</td>
                                     <td>{{$user->created_at}}</td>
-                                    <td><a href="" class="btn btn-primary fa fa-pencil"></a>
-                                        <a href="" class="btn btn-danger fa fa-trash"></a></td>
+                                <td><a href="{{ route('users.edit', $user->id) }}" class="btn btn-primary fa fa-pencil"></a>
+                                    <a href="{{ route('admin.users.destroy', $user->id) }}" class="btn btn-danger fa fa-trash" onclick="return confirm('¿Está seguro que desea eliminar el usuario {{$user->email}}?')"></a></td>
                                 </tr>
                                 @endforeach
                             </tbody>

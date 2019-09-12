@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UsersController extends Controller
 {
@@ -41,11 +42,9 @@ class UsersController extends Controller
         $user = new User($request->all());
         $user->password = bcrypt($request->password);
         $user->save();
-
+        flash('Usuario creado exitosamente')->success();
         //$users = User::all();
-        $users = User::orderBy('id', 'DESC')->paginate(25);
-        //dd($users);
-        return view('admin.users.index')->with('users', $users);
+        return redirect()->route('users.index');
 
     }
 
@@ -68,7 +67,8 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+        return view('admin.users.edit')->with('user', $user);
     }
 
     /**
@@ -80,7 +80,13 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+
+        $user->fill($request->all());
+        $user->password = bcrypt($request->password);
+        $user->save();
+        flash('El usuario '. $user->email .' a sido actualizado exitosamente')->success();
+        return redirect()->route('users.index');
     }
 
     /**
@@ -91,6 +97,17 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+        $user = User::find($id);
+        if($id == Auth::user()->id) {
+            flash('El usuario '. $user->email .' no se puede eliminar')->error();
+        }
+        else{
+        $user->delete();
+        flash('El usuario '. $user->email .' a sido eliminado exitosamente')->warning();
+        }
+        //dd($id);
+        return redirect()->route('users.index');
+
     }
 }

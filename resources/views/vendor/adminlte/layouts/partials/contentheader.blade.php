@@ -1,7 +1,7 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1 style="text-align: center">
-        @yield('contentheader_title', 'Page Headers here')
+        @yield('contentheader_title', 'Jarvis TBWA\Frederick')
         <small>@yield('contentheader_description')</small>
     </h1>
     <ol class="breadcrumb">

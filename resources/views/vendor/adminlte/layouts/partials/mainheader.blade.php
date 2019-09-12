@@ -6,7 +6,7 @@
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini"><b>T</b>BWA</span>
         <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"><b>TBWA</b>JARVIS</span>
+        <span class="logo-lg"><b>TBWA\</b>JARVIS</span>
     </a>
 
     <!-- Header Navbar -->
