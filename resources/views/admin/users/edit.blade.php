@@ -1,7 +1,7 @@
 @extends('adminlte::layouts.app')
 
 @section('htmlheader_title')
-	Edición de usuarios
+	Edici贸n de usuarios
 @endsection
 
 @section('contentheader_title')
@@ -17,7 +17,7 @@
 				<!-- Default box -->
 				<div class="box">
 					<div class="box-header with-border">
-						<h3 class="box-title">Formulario de edición</h3>
+						<h3 class="box-title">Formulario de edici贸n</h3>
 
 						<div class="box-tools pull-right">
 							<button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -63,10 +63,10 @@
                                     {!! Form::select('rol', ['administrador' => 'administrador','cliente' => 'cliente'],null, ['class' => 'form-control'] ) !!}
                             </div>
 
-                            <div class="form-group">
+                            <!--<div class="form-group">
                                     {!! Form::label('password','Password') !!}
-                                    {!! Form::password('password', ['class' => 'form-control', 'required', 'placeholder' => '********']) !!}
-                            </div>
+                                    {!! Form::password('password', ['class' => 'form-control', 'placeholder' => '********']) !!}
+                            </div>-->
 
                             <div class="form-group">
                                 {!! Form::submit('Guardar Cambios', ['class' => 'btn btn-primary']) !!}

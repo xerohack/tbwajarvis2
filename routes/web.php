@@ -23,7 +23,9 @@ Route::group(['prefix' => 'admin'], function () {
         'uses' => 'UsersController@destroy',
         'as'   => 'admin.users.destroy'
     ]);
+    Route::resource('ots', 'OtsController');
 });
+
 
 Route::group(['middleware' => 'auth'], function () {
     //    Route::get('/link1', function ()    {

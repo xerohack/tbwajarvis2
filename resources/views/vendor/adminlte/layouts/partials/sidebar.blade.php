@@ -31,17 +31,18 @@
 
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu" data-widget="tree">
-            <li class="header">{{ trans('adminlte_lang::message.header') }}</li>
+            <li class="header">Menu</li>
             <!-- Optionally, you can add icons to the links -->
-            <li class="active"><a href="{{ url('home') }}"><i class='fa fa-link'></i> <span>{{ trans('adminlte_lang::message.home') }}</span></a></li>
-            <li><a href="#"><i class='fa fa-link'></i> <span>{{ trans('adminlte_lang::message.anotherlink') }}</span></a></li>
+            <li class="active"><a href="{{ url('home') }}"><i class='fa fa-home'></i> <span>{{ trans('adminlte_lang::message.home') }}</span></a></li>
+        <!--    <li><a href="#"><i class='fa fa-link'></i> <span>{{ trans('adminlte_lang::message.anotherlink') }}</span></a></li> -->
             <li class="treeview">
-                <a href="#"><i class='fa fa-link'></i> <span>Gestion Usuarios</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <a href="#"><i class='fa fa-users'></i> <span>Gestion de Usuarios</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
-                <li><a href="{{ route('users.create')}}">Crear Usuarios</a></li>
-                <li><a href="{{ route('users.index')}}">Ver Usuarios</a></li>
+                <li><a href="{{ route('users.create')}}"><i class='fa fa-user-plus'></i> <span>Crear Usuarios</span></a></li>
+                <li><a href="{{ route('users.index')}}"><i class='fa fa-eye'></i> <span>Ver Usuarios</span></a></li>
                 </ul>
             </li>
+            <li class=""><a href="#"><i class='fa fa-file-text-o'></i> <span>Orden de Trabajo</span></a></li>
         </ul><!-- /.sidebar-menu -->
     </section>
     <!-- /.sidebar -->

@@ -83,7 +83,7 @@ class UsersController extends Controller
         $user = User::find($id);
 
         $user->fill($request->all());
-        $user->password = bcrypt($request->password);
+
         $user->save();
         flash('El usuario '. $user->email .' a sido actualizado exitosamente')->success();
         return redirect()->route('users.index');
