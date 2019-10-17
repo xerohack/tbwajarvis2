@@ -12,6 +12,7 @@
         "acacha/admin-lte-template-laravel": "^6.0",
         "caouecs/laravel-lang": "~4.0",
         "fideloper/proxy": "^4.0",
+        "freshwork/chilean-bundle": "^2.1",
         "laracasts/flash": "^3.0",
         "laravel/framework": "5.8.*",
         "laravel/tinker": "^1.0",

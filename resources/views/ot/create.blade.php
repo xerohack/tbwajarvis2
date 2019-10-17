@@ -12,12 +12,12 @@
 @section('main-content')
 	<div class="container-fluid spark-screen">
 		<div class="row">
-			<div class="col-md-12 col-md-offset-0">
+			<div class="col-md-8 col-md-offset-2">
 
 				<!-- Default box -->
 				<div class="box">
 					<div class="box-header with-border">
-						<h3 class="box-title">Formulario de creación OT</h3>
+						<h3 class="box-title">Formulario de creación OT Producción</h3>
 
 						<div class="box-tools pull-right">
 							<button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -33,10 +33,10 @@
                         <br>
                         {!! Form::open(['route' => 'ots.store', 'method' => 'POST']) !!}
 
-                            <div class="form-group">
+                           <!-- <div class="form-group">
                                 {!! Form::label('tipo','Seleccione el tipo de OT') !!}
                                 {!! Form::select('tipo', ['presupuesto' => 'Presupuesto','productivo' => 'Productivo', 'audiovisual' => 'Audiovisual'],null, ['class' => 'form-control'] ) !!}
-                            </div>
+                            </div> -->
 
                             <div class="form-group">
                                 {!! Form::label('cliente','Cliente') !!}
@@ -45,9 +45,16 @@
 
 
                             <div class="form-group">
-                                {!! Form::label('nombre','NOMBRE') !!}
-                                {!! Form::text('nombre', null, ['class' => 'form-control', 'required', 'placeholder' => 'Nombre']) !!}
+                                {!! Form::label('campana','Campaña') !!}
+                                {!! Form::text('campana', null, ['class' => 'form-control', 'required', 'placeholder' => 'Campaña']) !!}
                             </div>
+
+                            <div class="form-group">
+                                {!! Form::label('fechaot', 'Fecha') !!}
+                                {!! Form::date('fechaot', Carbon\Carbon::today(), ['class' => 'form-control', 'required']) !!}
+                            </div>
+
+                            
 
                             <div class="form-group">
                                 {!! Form::label('apellido','Apellido') !!}

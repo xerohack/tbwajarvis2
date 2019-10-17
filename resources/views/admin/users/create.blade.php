@@ -12,7 +12,7 @@
 @section('main-content')
 	<div class="container-fluid spark-screen">
 		<div class="row">
-			<div class="col-md-12 col-md-offset-0">
+			<div class="col-md-8 col-md-offset-2">
 
 				<!-- Default box -->
 				<div class="box">
@@ -34,7 +34,7 @@
                         {!! Form::open(['route' => 'users.store', 'method' => 'POST']) !!}
 
                             <div class="form-group">
-                                {!! Form::label('nombre','NOMBRE') !!}
+                                {!! Form::label('nombre','Nombre') !!}
                                 {!! Form::text('nombre', null, ['class' => 'form-control', 'required', 'placeholder' => 'Nombre']) !!}
                             </div>
 
@@ -67,9 +67,9 @@
                                     {!! Form::label('password','Password') !!}
                                     {!! Form::password('password', ['class' => 'form-control', 'required', 'placeholder' => '********']) !!}
                             </div>
-
+                            <hr>
                             <div class="form-group">
-                                {!! Form::submit('Registrar', ['class' => 'btn btn-primary']) !!}
+                                {!! Form::submit('Registrar', ['class' => 'btn btn-primary btn-lg btn-block']) !!}
                             </div>
 
                         {!! Form::close() !!}
