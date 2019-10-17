@@ -40,6 +40,7 @@ class UsersController extends Controller
     public function store(Request $request)
     {
         $user = new User($request->all());
+        //dd($user);
         $user->password = bcrypt($request->password);
         $user->save();
         flash('Usuario creado exitosamente')->success();

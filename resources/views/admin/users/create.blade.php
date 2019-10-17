@@ -45,12 +45,17 @@
 
                             <div class="form-group">
                                     {!! Form::label('rut','Rut') !!}
-                                    {!! Form::text('rut', null, ['class' => 'form-control', 'required', 'placeholder' => 'Rut']) !!}
+                                    {!! Form::text('rut', null, ['id' => 'rut', 'class' => 'form-control', 'required', 'placeholder' => 'Rut']) !!}
                             </div>
 
                             <div class="form-group">
                                     {!! Form::label('email','E-MAIL') !!}
                                     {!! Form::email('email', null, ['class' => 'form-control', 'required', 'placeholder' => 'E-mail']) !!}
+                            </div>
+
+                            <div class="form-group">
+                                {!! Form::label('area','Area') !!}
+                                {!! Form::text('area', null, ['class' => 'form-control', 'required', 'placeholder' => 'Area']) !!}
                             </div>
 
                             <div class="form-group">
@@ -60,7 +65,7 @@
 
                             <div class="form-group">
                                     {!! Form::label('rol','Rol') !!}
-                                    {!! Form::select('rol', ['administrador' => 'administrador','cliente' => 'cliente'],null, ['class' => 'form-control'] ) !!}
+                                    {!! Form::select('rol', ['administrador' => 'Administrador','cliente' => 'Cliente', 'usuario' => 'Usuario'],null, ['class' => 'form-control'] ) !!}
                             </div>
 
                             <div class="form-group">

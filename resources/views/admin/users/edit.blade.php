@@ -54,13 +54,18 @@
                             </div>
 
                             <div class="form-group">
+                                {!! Form::label('area','Area') !!}
+                                {!! Form::text('area', $user->area, ['class' => 'form-control', 'required', 'placeholder' => 'Area']) !!}
+                        </div>
+
+                            <div class="form-group">
                                     {!! Form::label('cargo','Cargo') !!}
                                     {!! Form::text('cargo', $user->cargo, ['class' => 'form-control', 'required', 'placeholder' => 'Cargo']) !!}
                             </div>
 
                             <div class="form-group">
                                     {!! Form::label('rol','Rol') !!}
-                                    {!! Form::select('rol', ['administrador' => 'administrador','cliente' => 'cliente'],null, ['class' => 'form-control'] ) !!}
+                                    {!! Form::select('rol', ['administrador' => 'Administrador','cliente' => 'Cliente', 'usuario' => 'Usuario'],null, ['class' => 'form-control'] ) !!}
                             </div>
 
                             <!--<div class="form-group">

@@ -29,13 +29,14 @@
 					</div>
 					<div class="box-body table-responsive">
                         <!-- Aqui va el formulario-->
-                        <table class="table table-striped">
+                        <table class="table table-striped text-center">
                             <thead>
                                 <th>ID</th>
                                 <th>Nombre</th>
                                 <th>Apellido</th>
                                 <th>Rut</th>
                                 <th>Email</th>
+                                <th>Area</th>
                                 <th>Cargo</th>
                                 <th>Rol</th>
                                 <th>Fecha Registro</th>
@@ -49,6 +50,7 @@
                                     <td>{{$user->apellido}}</td>
                                     <td>{{$user->rut}}</td>
                                     <td>{{$user->email}}</td>
+                                    <td>{{$user->area}}</td>
                                     <td>{{$user->cargo}}</td>
                                     <td>{{$user->rol}}</td>
                                     <td>{{$user->created_at}}</td>

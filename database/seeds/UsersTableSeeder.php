@@ -16,9 +16,10 @@ class UsersTableSeeder extends Seeder
 
         User::create(
             [
-                'rut' => '11111111-1',
+                'rut' => '11.111.111-1',
                 'nombre' => 'admin',
                 'apellido' => 'admin2',
+                'area' => 'administracion',
                 'cargo' => 'administrador',
                 'rol' => 'usuario-admin',
                 'email' => 'admin@tbwa.cl',
