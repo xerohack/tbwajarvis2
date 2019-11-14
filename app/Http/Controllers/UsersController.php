@@ -8,11 +8,6 @@ use Illuminate\Support\Facades\Auth;
 
 class UsersController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         //$users = User::all();
@@ -21,24 +16,14 @@ class UsersController extends Controller
         return view('admin.users.index')->with('users', $users);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return view('admin.users.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
+        //dd($request);
         $user = new User($request->all());
         //dd($user);
         $user->password = bcrypt($request->password);

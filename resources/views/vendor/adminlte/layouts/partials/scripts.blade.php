@@ -3,6 +3,10 @@
 <!-- JQuery and bootstrap are required by Laravel 5.3 in resources/assets/js/bootstrap.js-->
 <!-- Laravel App -->
 <script src="{{ url (mix('/js/app.js')) }}" type="text/javascript"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/momentjs/2.14.1/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
 <script src="{{ asset('/js/jquery.rut.js') }}"></script>
 <script>
     $(function () {
@@ -20,6 +24,11 @@
 <script>
     $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
 </script>
+<script>
+        $(function () {
+          $('#datetimepicker1').datetimepicker();
+       });
+      </script>
 
 
 

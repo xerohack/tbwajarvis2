@@ -26,6 +26,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::resource('ots', 'OtsController');
 });
 
+Route::resource('cliente', 'ClienteController');
 
 Route::group(['middleware' => 'auth'], function () {
     //    Route::get('/link1', function ()    {
