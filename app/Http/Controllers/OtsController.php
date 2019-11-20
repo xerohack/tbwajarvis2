@@ -5,72 +5,74 @@ namespace App\Http\Controllers;
 use App\Cliente;
 use App\User;
 use App\Ot;
+use App\Item;
+use Carbon\Carbon;
+
 use Illuminate\Http\Request;
+
 
 class OtsController extends Controller
 {
     public function index()
     {
         //$clientes = User::all();
-        $ots = Ot::orderBy('id', 'DESC')->paginate(25);
+        $ots = Ot::orderBy('id_ot', 'DESC')->paginate(25);
+        //$ots = Ot::all();
         //dd($clientes);
         return view('ot.index')->with('ots', $ots);
     }
 
     public function create()
     {
-        //$clientes = User::all()->where('rol', 'cliente')->pluck('nombre');
-        $clientes = Cliente::all()->pluck('nombrecliente');
+        $clientes = Cliente::all()->pluck('nombreempresa');
+
         return view('ot.create')->with('cliente',$clientes);
     }
 
     public function store(Request $request)
     {
-        //
+        //return $request;
+        //dd($request);
+        $cliente=Cliente::find($request->cliente_id);
+
+        $data=$request->all();
+        $lastid=Ot::create($data)->id_ot;
+
+        if(count($request->nombreitem) > 0)
+        {
+        foreach($request->nombreitem as $item=>$v){
+            $data2=array(
+                'ot_id'=>$lastid,
+                'nombreitem'=>$request->nombreitem[$item],
+                'cantidaditem'=>$request->cantidaditem[$item],
+                'valoritem'=>$request->valoritem[$item],
+                'detalleitem'=>$request->detalleitem[$item]
+            );
+        Item::insert($data2);
+      }
+        }
+        return redirect()->back()->with('success','¡OT creada exitosamente!');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function edit($id_ot)
     {
-        //
+        $ot = Ot::find($id_ot);
+        return view('ots.edit')->with('ot', $ot);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         //
     }
+
 }

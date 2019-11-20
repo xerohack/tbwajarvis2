@@ -7,8 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Cliente extends Model
 {
     protected $table='clientes';
-    protected $primaryKey='id';
-    public $timestamps=false;
+    protected $primaryKey='id_cliente';
     protected $fillable =[
         'nombrecliente',
         'apellidocliente',
@@ -20,6 +19,8 @@ class Cliente extends Model
         'giroempresa',
         'direccionempresa'
     ];
-    protected $guarded =[
-    ];
+
+    public function ots(){
+        return $this->hasMany('App\Ot');
+    }
 }

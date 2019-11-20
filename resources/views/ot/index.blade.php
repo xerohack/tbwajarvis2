@@ -33,7 +33,7 @@
                                 <th>ID</th>
                                 <th>Cliente</th>
                                 <th>Tema</th>
-                                <th>Producto</th>
+                                <th>Producto/Campaña</th>
                                 <th>Departamento</th>
                                 <th>Ejecutivo responsable</th>
                                 <th>Estado</th>
@@ -44,18 +44,18 @@
                             <tbody>
                                 @foreach ($ots as $ot)
                                 <tr>
-                                    <td>{{$ot->id}}</td>
-                                    <td>{{$ot->cliente}}</td>
+                                    <td>{{$ot->id_ot}}</td>
+                                    <td>{{$ot->cliente_id}}</td>
                                     <td>{{$ot->tema}}</td>
-                                    <td>{{$ot->producto}}</td>
+                                    <td>{{$ot->campana}}</td>
                                     <td>{{$ot->departamento}}</td>
                                     <td>{{$ot->ejecutivores}}</td>
                                     <td>{{$ot->estado}}</td>
                                     <td>{{$ot->created_at}}</td>
                                     <td>{{$ot->fechaentrega}}</td>
                                     <td>
-                                    <a href="{{ route('ots.edit', $ot->id) }}" class="btn btn-primary fa fa-pencil"></a>
-                                    <a href="{{ route('ots.destroy', $ot->id) }}" class="btn btn-danger fa fa-trash" onclick="return confirm('¿Está seguro que desea eliminar la orden de trabajo {{$ot->id}}?')"></a>
+                                    <a href="{{ route('ots.edit', $ot->id_ot) }}" class="btn btn-primary fa fa-pencil"></a>
+                                    <a href="{{ route('ots.destroy', $ot->id_ot) }}" class="btn btn-danger fa fa-trash" onclick="return confirm('¿Está seguro que desea eliminar la orden de trabajo {{$ot->id}}?')"></a>
                                     </td>
                                 </tr>
                                 @endforeach

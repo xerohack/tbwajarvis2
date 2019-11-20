@@ -6,15 +6,10 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateClientesTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('clientes', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id_cliente');
             $table->string('nombrecliente');
             $table->string('apellidocliente');
             $table->string('emailcliente');
@@ -24,16 +19,10 @@ class CreateClientesTable extends Migration
             $table->string('rutempresa');
             $table->string('giroempresa');
             $table->string('direccionempresa');
-            $table->rememberToken();
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('clientes');

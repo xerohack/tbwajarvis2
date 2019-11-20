@@ -32,6 +32,7 @@
                         <h3>Ingrese los datos para el nuevo usuario</h3>
                         <br>
                         {!! Form::open(['route' => 'users.store', 'method' => 'POST']) !!}
+                        {{ csrf_field() }}
 
                             <div class="form-group">
                                 {!! Form::label('nombre','Nombre') !!}

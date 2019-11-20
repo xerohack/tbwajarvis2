@@ -6,33 +6,29 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateOtsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('ots', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id_ot');
+            $table->integer('cliente_id');
             $table->string('tema');
             $table->string('campana');
-            $table->string('departamento');
+            $table->enum('departamento', ['creacion','produccion','audiovisual','planificacion','cuentas'])->nullable();
             $table->string('ejecutivores');
             $table->datetime('fechaentrega');
-            $table->string('tipotrabajo');
-            $table->string('notificarcorreo');
-            $table->string('url');
-            $table->string('file_archivo');
+            $table->enum('tipotrabajo',['original','boceto','modificaciones'])->nullable();
+            $table->string('notificarcorreo')->nullable();
+            $table->string('url')->nullable();
+            $table->string('file_archivo')->nullable();
+            $table->string('total')->nullable();
+            $table->boolean('estado')->default(1);
             $table->timestamps();
+
+            //Relation
+            //$table->foreign('cliente_id')->references('id_cliente')->on('clientes');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('ots');

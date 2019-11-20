@@ -34,7 +34,7 @@
                         {!! Form::open(['route' => ['users.update', $user->id], 'method' => 'PUT']) !!}
 
                             <div class="form-group">
-                                {!! Form::label('nombre','NOMBRE') !!}
+                                {!! Form::label('nombre','Nombre') !!}
                                 {!! Form::text('nombre', $user->nombre, ['class' => 'form-control', 'required', 'placeholder' => 'Nombre']) !!}
                             </div>
 

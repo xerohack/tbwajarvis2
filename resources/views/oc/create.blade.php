@@ -68,7 +68,7 @@
                             <div class="col-md-6"> <!-- Aqui va columna dos-->
                                 <div class="form-group">
                                     {!! Form::label('fechaentrega', 'Solicitado para') !!}
-                                    <div class="form-group input-group date" id="datetimepicker1">
+                                    <div class="form-group input-group date" id="datetimepicker2">
                                         <input type='text' class="form-control" />
                                             <span class="input-group-addon">
                                             <span class="glyphicon glyphicon-calendar"></span>

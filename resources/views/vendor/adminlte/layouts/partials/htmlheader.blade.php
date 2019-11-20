@@ -6,7 +6,17 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link href="{{ mix('/css/all.css') }}" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css">
+    <link href="{{ asset('/css/bootstrap-select.min.css') }}" rel="stylesheet" type="text/css"/>
+
+    <!-- Datetimepicker CSS -->
+    <link href="{{ asset('/datetimepicker/jquery.datetimepicker.css') }}" rel="stylesheet" type="text/css"/>
+
+    <!-- Datetimepicker JS -->
+    <script src="{{ asset('/datetimepicker/jquery.js') }}"></script>
+    <script src="{{ asset('/datetimepicker/build/jquery.datetimepicker.full.min.js') }}"></script>
+
+
+
 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

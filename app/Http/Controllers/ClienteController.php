@@ -18,7 +18,8 @@ class ClienteController extends Controller
 
     public function create()
     {
-        return view('admin.clientes.modal');
+        //$clientes = Cliente::all()->pluck('nombrecliente');
+        //return view('ot.create')->with('cliente',$clientes);
     }
 
     public function store(Request $request)
