@@ -96,7 +96,7 @@
                                                 <thead>
                                                     <tr>
                                                         <th colspan="7">
-                                                            <button type="button" class="btn btn-primary center-block" onclick="agregarFila()">Agregar ítem</button>
+                                                            <button type="button" class="btn btn-primary center-block" onclick="addRow()">Agregar ítem</button>
                                                         </th>
                                                     </tr>
                                                 </thead>
@@ -105,23 +105,15 @@
                                                         <th> </th>
                                                         <th>Nombre de Pieza</th>
                                                         <th>Cantidad</th>
-                                                        {{-- <th>Formato</th>
-                                                        <th>Material</th>
-                                                        <th>Colores</th>
-                                                        <th>Terminaciones</th> --}}
                                                         <th>Valor</th>
                                                         <th>Detalle</th>
                                                     </tr>
                                                     <tr>
-                                                        <td><button type="button" class="btn btn-danger" onclick="eliminarFila()">x</button></td>
-                                                        <td>{!! Form::text('nombreitem', null, ['class' => 'form-control', 'placeholder' => 'Nombre item']) !!}</td>
-                                                        <td>{!! Form::number('cantidaditem', null, ['class' => 'form-control', 'placeholder' => 'Cantidad']) !!}</td>
-                                                        {{-- <td><input type="text" class="form-control" placeholder="Formato" required="required"></td>
-                                                        <td><input type="text" class="form-control" placeholder="Material"></td>
-                                                        <td><input type="text" class="form-control" placeholder="Colores"></td>
-                                                        <td><input type="text" class="form-control" placeholder="Terminaciones"></td> --}}
-                                                        <td>{!! Form::text('valoritem', null, ['class' => 'form-control', 'placeholder' => 'Valor']) !!}</td>
-                                                        <td colspan="7" class="col-12 col-sm-6 col-md-6">{!! Form::textarea('detalleitem', null, ['class' => 'form-control', 'placeholder' => 'Detalle del item']) !!}</td>
+                                                        <td><button type="button" class="btn btn-danger remove" onclick="eliminarFila()"><i class="glyphicon glyphicon-remove"></i></button></td>
+                                                        <td>{!! Form::text('nombreitem[]', null, ['class' => 'form-control', 'placeholder' => 'Nombre item','required']) !!}</td>
+                                                        <td>{!! Form::number('cantidaditem[]', null, ['class' => 'form-control', 'placeholder' => 'Cantidad','required']) !!}</td>
+                                                        <td>{!! Form::text('valoritem[]', null, ['class' => 'form-control', 'placeholder' => 'Valor','required']) !!}</td>
+                                                        <td colspan="7" class="col-12 col-sm-6 col-md-6">{!! Form::textarea('detalleitem[]', null, ['class' => 'form-control', 'placeholder' => 'Detalle del item','required']) !!}</td>
                                                     </tr>
                                                 </tbody>
                                                 <tfoot>

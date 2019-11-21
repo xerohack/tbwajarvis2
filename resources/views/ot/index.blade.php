@@ -43,26 +43,31 @@
                             </thead>
                             <tbody>
                                 @foreach ($ots as $ot)
-                                <tr>
-                                    <td>{{$ot->id_ot}}</td>
-                                    <td>{{$ot->cliente_id}}</td>
-                                    <td>{{$ot->tema}}</td>
-                                    <td>{{$ot->campana}}</td>
-                                    <td>{{$ot->departamento}}</td>
-                                    <td>{{$ot->ejecutivores}}</td>
-                                    <td>{{$ot->estado}}</td>
-                                    <td>{{$ot->created_at}}</td>
-                                    <td>{{$ot->fechaentrega}}</td>
-                                    <td>
-                                    <a href="{{ route('ots.edit', $ot->id_ot) }}" class="btn btn-primary fa fa-pencil"></a>
-                                    <a href="{{ route('ots.destroy', $ot->id_ot) }}" class="btn btn-danger fa fa-trash" onclick="return confirm('¿Está seguro que desea eliminar la orden de trabajo {{$ot->id}}?')"></a>
-                                    </td>
-                                </tr>
+                                    @if($ot->condicion == 1)
+                                    <tr>
+                                        <td>{{$ot->id_ot}}</td>
+                                        <td>{{$ot->cliente_id}}</td>
+                                        <td>{{$ot->tema}}</td>
+                                        <td>{{$ot->campana}}</td>
+                                        <td>{{$ot->departamento}}</td>
+                                        <td>{{$ot->ejecutivores}}</td>
+                                        <td>{{$ot->estado}}</td>
+                                        <td>{{$ot->created_at}}</td>
+                                        <td>{{$ot->fechaentrega}}</td>
+                                        <td>
+                                        <a href="{{ route('ots.edit', $ot->id_ot) }}" class="btn btn-primary fa fa-pencil"></a>
+                                        <a>{!! Form::open(['action' => ['OtsController@destroy', $ot->id_ot], 'method' => 'delete']) !!}
+                                                <button type="submit" onclick="return confirm('¿Seguro que desea eliminar la OT?')" class='btn btn-danger fa fa-trash'></button>
+                                            {!! Form::close() !!}</a>
+                                        </td>
+                                    </tr>
+
+                                    @endif
                                 @endforeach
                             </tbody>
 
                         </table>
-                        {!! $ots->render()!!}
+                        {{-- {!! $ots->render()!!} --}}
 
 						{{-- {{ trans('adminlte_lang::message.logged') }}. USUARIOS {{ Auth::ot()->nombre }} --}}
 					</div>

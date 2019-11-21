@@ -41,10 +41,11 @@
 </script>
 
 <script>
+    /*
     function agregarFila(){
     document.getElementById("tablaitem").insertRow(-1).innerHTML = '<tr><td><button type="button" class="btn btn-danger" onclick="eliminarFila()">x</button></td><td>{!!Form::text('nombreitem', null,['class'=>'form-control','placeholder'=>'Nombre item'])!!}</td><td>{!!Form::number('cantidaditem',null,['class'=>'form-control','placeholder'=>'Cantidad'])!!}</td><td>{!!Form::text('valoritem',null,['class'=>'form-control','placeholder'=>'Valor'])!!}</td><td colspan="7" class="col-12 col-sm-6 col-md-6">{!!Form::textarea('detalleitem',null,['class'=>'form-control','placeholder'=>'Detalle del item'])!!}</td></tr>';
     }
-
+    */
 
     function eliminarFila(){
     var table = document.getElementById("tablaitem");
@@ -56,6 +57,18 @@
     else
         table.deleteRow(rowCount -1);
     }
+// <!-- PRUEBA DE SCRIPT AGREGAR ROW-->
+    function addRow()
+    {
+        var tr='<tr>'+
+        '<td><button type="button" class="btn btn-danger remove" onclick="eliminarFila()"><i class="glyphicon glyphicon-remove"></i></button></td>'+
+        '<td><input type="text" name="nombreitem[]" class="form-control" placeholder="Nombre item"></td>'+
+        '<td><input type="text" name="cantidaditem[]" class="form-control" placeholder="Cantidad"</td>'+
+        '<td><input type="text" name="valoritem[]" class="form-control" placeholder="Valor"</td>'+
+        '<td colspan="7" class="col-12 col-sm-6 col-md-6">{!! Form::textarea('detalleitem[]', null, ['class' => 'form-control', 'placeholder' => 'Detalle del item']) !!}</td>'+
+        '</tr>';
+        $('tbody').append(tr);
+    };
 </script>
 
 

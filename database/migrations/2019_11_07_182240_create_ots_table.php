@@ -21,7 +21,8 @@ class CreateOtsTable extends Migration
             $table->string('url')->nullable();
             $table->string('file_archivo')->nullable();
             $table->string('total')->nullable();
-            $table->boolean('estado')->default(1);
+            $table->string('estado')->nullable();
+            $table->boolean('condicion')->default(1);
             $table->timestamps();
 
             //Relation
