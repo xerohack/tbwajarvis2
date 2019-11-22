@@ -47,7 +47,8 @@
                                     @if($ot->condicion == 1)
                                     <tr>
                                         <td>{{$ot->id}}</td>
-                                        <td>{{$ot->clientes}}</td>
+                                        <td>{{$ot->cliente_id/* ->nombreempresa */}}</td>
+                                        {{-- <td>{!! $ot->clientes->nombreempresa!!} </td> --}}
                                         <td>{{$ot->tema}}</td>
                                         <td>{{$ot->campana}}</td>
                                         <td>{{$ot->departamento}}</td>
@@ -67,7 +68,7 @@
                             </tbody>
 
                         </table>
-                        {!! $ots->render()!!}
+                        {{-- {!! $ots->render()!!} --}}
 
 						{{-- {{ trans('adminlte_lang::message.logged') }}. USUARIOS {{ Auth::ot()->nombre }} --}}
 					</div>

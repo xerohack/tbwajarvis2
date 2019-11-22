@@ -15,6 +15,8 @@
     <script src="{{ asset('/datetimepicker/jquery.js') }}"></script>
     <script src="{{ asset('/datetimepicker/build/jquery.datetimepicker.full.min.js') }}"></script>
 
+    <!-- Jquery 3.4.1 JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 
 
@@ -26,8 +28,7 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
     <script>
         //See https://laracasts.com/discuss/channels/vue/use-trans-in-vuejs

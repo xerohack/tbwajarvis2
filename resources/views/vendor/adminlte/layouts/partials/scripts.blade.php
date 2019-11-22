@@ -13,9 +13,10 @@
 {{-- <script src="{{ asset('/js/bootstrap.js') }}"></script>--}}
 {{-- <script src="{{ asset('/js/bootstrap.min.js') }}"></script> --}}
 
-
 <!-- Datetimepicker JS -->
 <script src="{{ asset('/datetimepicker/build/jquery.datetimepicker.full.min.js') }}"></script>
+
+@yield('scriptselect')
 
 <script>
     $(function () {
@@ -38,7 +39,8 @@
     $(function () {
         $.datetimepicker.setLocale('es');
         $('#datetimepicker').datetimepicker({
-
+            minDate: 0,  // disable past date
+            //minTime: 0, // disable past time
         });
     });
 </script>
@@ -69,10 +71,18 @@
         '<td><input type="text" name="cantidaditem[]" class="form-control" placeholder="Cantidad"</td>'+
         '<td><input type="text" name="valoritem[]" class="form-control" placeholder="Valor"</td>'+
         '<td colspan="7" class="col-12 col-sm-6 col-md-6">{!! Form::textarea('detalleitem[]', null, ['class' => 'form-control', 'placeholder' => 'Detalle del item']) !!}</td>'+
+        '</tr>'+
+        '<tr>'+
+        '<th colspan="7">Comentario item (Opcional)</th>'+
+        '</tr>'+
+        '<tr>'+
+        '<th colspan="7">{!! Form::textarea('comentarioitem[]', null, ['class' => 'form-control', 'placeholder' => 'Inserte un comentario','required','maxlength' => 10000 ]) !!}</th>'+
         '</tr>';
         $('tbody').append(tr);
     };
 </script>
+
+
 
 
 

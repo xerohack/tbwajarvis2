@@ -9,7 +9,7 @@ class CreateOtsTable extends Migration
     public function up()
     {
         Schema::create('ots', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->integer('cliente_id');
             $table->string('tema');
             $table->string('campana');
@@ -20,6 +20,7 @@ class CreateOtsTable extends Migration
             $table->string('notificarcorreo')->nullable();
             $table->string('url')->nullable();
             $table->string('file_archivo')->nullable();
+            $table->longText('comentariot')->nullable();
             $table->string('total')->nullable();
             $table->string('estado')->nullable();
             $table->boolean('condicion')->default(1);

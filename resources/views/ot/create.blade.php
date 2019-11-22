@@ -9,6 +9,7 @@
 @endsection
 
 @section('main-content')
+@inject('clientes', 'App\Services\Clientes')
 <div class="container-fluid spark-screen">
     <div class="row">
                 <div class="col-md-12">
@@ -36,10 +37,26 @@
                                 <a href="" data-target="#addCli" data-toggle="modal">
                                     <button class="btn btn-primary btn-xs pull-right" style="margin-right:10px;" >Nuevo cliente</button>
                                 </a>
+
+                                    <select id="cliente" name="cliente_id" class="form-control{{ $errors->has('cliente_id') ? ' is-invalid' : '' }} selectpicker" data-live-search="true">
+                                        @foreach($clientes->get() as $index => $cliente)
+                                            <option value="{{ $index }}" {{ old('cliente_id') == $index ? 'selected' : '' }}>
+                                                {{ $cliente }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+
+                                    @if ($errors->has('cliente_id'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('cliente_id') }}</strong>
+                                        </span>
+                                    @endif
+
+                                {{-- {!! Form::select('cliente_id', $products, $selectedID, ['class' => 'form-control']) !!} --}}
                                 {{-- <button type="button" class="btn btn-primary btn-xs pull-right" style="margin-right:10px;" data-toggle="modal" data-target="#addCli">
                                     Nuevo cliente
                                 </button> --}}
-                                {!! Form::select('cliente_id',$cliente, null, ['class' => 'form-control selectpicker', 'placeholder' => 'Seleccione cliente', 'required', 'data-live-search' => 'true']) !!}
+                                {{-- {!! Form::select('cliente_id',$cliente, null, ['id'=>'cliente','class' => 'form-control selectpicker', 'placeholder' => 'Seleccione cliente', 'required', 'data-live-search' => 'true']) !!} --}}
                             </div>
                             <div class="form-group">
                                 {!! Form::label('tema','Tema') !!}
@@ -85,7 +102,15 @@
                                 {!! Form::file('file_archivo', ['class' => 'form-group' ]) !!}
                             </div>
                             {{-- {!! Form::close() !!} --}}
+
                         </div> <!-- Cierra colummna 2-->
+                        <div class="col-md-12"><!-- COMENTARIO OT-->
+                            <div class="box-header with-border" style="background-color:#f4f4f4;border-radius: 15px;">
+                                    {!! Form::label('comentariot','Comentario (Opcional)') !!}
+                                    {!! Form::textarea('comentariot', null, ['class' => 'form-control', 'placeholder' => 'Inserte un comentario','required','maxlength' => 10000 ]) !!}
+                            </div>
+                        </div> <!-- Cierra COMENTARIO OT-->
+
                         <div class="box-body"><!-- /.box-body2 -->
                             <div class="col-md-12">
                                 <div class="box-header with-border">
@@ -115,6 +140,14 @@
                                                         <td>{!! Form::text('valoritem[]', null, ['class' => 'form-control', 'placeholder' => 'Valor','required']) !!}</td>
                                                         <td colspan="7" class="col-12 col-sm-6 col-md-6">{!! Form::textarea('detalleitem[]', null, ['class' => 'form-control', 'placeholder' => 'Detalle del item','required','maxlength' => 10000 ]) !!}</td>
                                                     </tr>
+                                                    <tr>
+                                                        <th colspan="7">Comentario item (Opcional)</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th colspan="7">
+                                                                {!! Form::textarea('comentarioitem[]', null, ['class' => 'form-control', 'placeholder' => 'Inserte un comentario','required','maxlength' => 10000 ]) !!}
+                                                        </th>
+                                                    </tr>
                                                 </tbody>
                                                 <tfoot>
 
@@ -138,5 +171,15 @@
     @include('ot.modal')
 
 </div>
+ @endsection
+
+ @section('scriptselect')
+ <script>
+    $(document).ready(function(){
+        $('#cliente').on('change',function(){
+            var cliente_id = $(this).val();
+        }) ;
+    });
+</script>
  @endsection
 

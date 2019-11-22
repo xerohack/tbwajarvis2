@@ -15,16 +15,19 @@ class OtsController extends Controller
 {
     public function index()
     {
-        $ots = Ot::orderBy('id', 'DESC')->paginate(5);
+        $ots = Ot::orderBy('id', 'DESC')->paginate(20);
         $ots->each(function($ots){
-            $ots->clientes;
-            $ots->items;
+        $ots->clientes;
         });
-        dd($ots);
-        //return view('courses')->with('ots', $ots);
-
+        //dd($ots);
 
         return view('ot.index')->with('ots', $ots);
+
+/*         $ots= Ot::all();
+
+        //dd($prestamos);
+
+        return view('ot.index')->with('ots',$ots); */
     }
 
     public function create()
@@ -36,16 +39,18 @@ class OtsController extends Controller
 
     public function store(Request $request)
     {
-        //return $request;
-        //dd($request);
         $cliente=Cliente::find($request->cliente_id);
+        //$cliente = new Cliente($request->all());
+
+        //dd($request);
 
         $data=$request->all();
         $lastid=Ot::create($data)->id;
 
         if(count($request->nombreitem) > 0)
         {
-        foreach($request->nombreitem as $item=>$v){
+        foreach($request->nombreitem as $item=>$v)
+            {
             $data2=array(
                 'ot_id'=>$lastid,
                 'nombreitem'=>$request->nombreitem[$item],
@@ -54,15 +59,17 @@ class OtsController extends Controller
                 'detalleitem'=>$request->detalleitem[$item]
             );
         Item::insert($data2);
-      }
+            }
         }
-        return redirect()->back()->with('success','¡OT creada exitosamente!');
+        $cliente->save();
+        flash('¡OT creada exitosamente!')->success();
+        return redirect()->back();
     }
 
     public function show($id)
     {
-        $ot = Ot::findOrFail($id);
-        return view('ot.show',compact('ot'));
+        $ots = Ot::findOrFail($id);
+        return view('ot.show',compact('ots'));
     }
 
     public function edit($id)

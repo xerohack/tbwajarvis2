@@ -37,7 +37,20 @@
                                 {{-- <button type="button" class="btn btn-primary btn-xs pull-right" style="margin-right:10px;" data-toggle="modal" data-target="#addCli">
                                     Nuevo cliente
                                 </button> --}}
-                                {!! Form::select('cliente_id',$cliente,$clientex,['class' => 'form-control selectpicker', 'placeholder' => 'Seleccione cliente', 'required', 'data-live-search' => 'true']) !!}
+                                {{-- {!! Form::select('cliente_id',$cliente,$clientex,['class' => 'form-control selectpicker', 'placeholder' => 'Seleccione cliente', 'required', 'data-live-search' => 'true']) !!} --}}
+                                <select id="cliente" name="cliente_id" class="form-control{{ $errors->has('cliente_id') ? ' is-invalid' : '' }} selectpicker" data-live-search="true">
+                                        @foreach($clientes->get() as $index => $cliente)
+                                            <option value="{{ $index }}" {{ old('cliente_id') == $index ? 'selected' : '' }}>
+                                                {{ $cliente }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+
+                                    @if ($errors->has('cliente_id'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('cliente_id') }}</strong>
+                                        </span>
+                                    @endif
                             </div>
                             <div class="form-group">
                                 {!! Form::label('tema','Tema') !!}

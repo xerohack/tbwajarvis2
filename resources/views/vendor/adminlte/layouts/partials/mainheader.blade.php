@@ -4,9 +4,9 @@
     <!-- Logo -->
     <a href="{{ url('/home') }}" class="logo" style="background-color: rgb(254,190,0)">
         <!-- mini logo for sidebar mini 50x50 pixels -->
-        <span class="logo-mini"><b>T</b>BWA</span>
+        <span class="logo-mini"><b style="color:black;font-weight:bold;font-size:40px">\</b></span>
         <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"><b>TBWA\</b>Frederick</span>
+        <span class="logo-lg" style="font-size:25px"><b>TBWA</b><b style="color:black;font-weight:bold">\</b><b style="color:black">Frederick</b></span>
     </a>
 
     <!-- Header Navbar -->
@@ -126,12 +126,12 @@
                             <li class="user-header" style="background-color: rgb(254,204,0)  !important;">
                                 <img src="{{ Gravatar::get($user->email) }}" class="img-circle" alt="User Image" />
                                 <p>
-                                    <span data-toggle="tooltip" title="{{ Auth::user()->name }}">{{ Auth::user()->name }}</span>
-                                    <small>{{ trans('adminlte_lang::message.login') }} Nov. 2012</small>
+                                    <span data-toggle="tooltip" title="{{ Auth::user()->email }}">{{ Auth::user()->email }}</span>
+                                    {{-- <small>{{ trans('adminlte_lang::message.login') }} Nov. 2012</small> --}}
                                 </p>
                             </li>
                             <!-- Menu Body -->
-                            <li class="user-body">
+{{--                             <li class="user-body">
                                 <div class="col-xs-4 text-center">
                                     <a href="#">{{ trans('adminlte_lang::message.followers') }}</a>
                                 </div>
@@ -141,7 +141,7 @@
                                 <div class="col-xs-4 text-center">
                                     <a href="#">{{ trans('adminlte_lang::message.friends') }}</a>
                                 </div>
-                            </li>
+                            </li> --}}
                             <!-- Menu Footer-->
                             <li class="user-footer">
                                 <div class="pull-left">
