@@ -9,12 +9,12 @@ class CreateItemsTable extends Migration
     public function up()
     {
         Schema::create('items', function (Blueprint $table) {
-            $table->increments('id_item');
+            $table->increments('id');
             $table->integer('ot_id');
             $table->string('nombreitem');
             $table->string('cantidaditem');
             $table->string('valoritem');
-            $table->string('detalleitem');
+            $table->longText('detalleitem');
             $table->timestamps();
 
             //Relation

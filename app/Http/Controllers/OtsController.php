@@ -15,10 +15,15 @@ class OtsController extends Controller
 {
     public function index()
     {
-        //$clientes = User::all();
-        $ots = Ot::orderBy('id_ot', 'DESC')->paginate(25);
-        //$ots = Ot::all();
-        //dd($clientes);
+        $ots = Ot::orderBy('id', 'DESC')->paginate(5);
+        $ots->each(function($ots){
+            $ots->clientes;
+            $ots->items;
+        });
+        dd($ots);
+        //return view('courses')->with('ots', $ots);
+
+
         return view('ot.index')->with('ots', $ots);
     }
 
@@ -36,7 +41,7 @@ class OtsController extends Controller
         $cliente=Cliente::find($request->cliente_id);
 
         $data=$request->all();
-        $lastid=Ot::create($data)->id_ot;
+        $lastid=Ot::create($data)->id;
 
         if(count($request->nombreitem) > 0)
         {
@@ -54,21 +59,21 @@ class OtsController extends Controller
         return redirect()->back()->with('success','¡OT creada exitosamente!');
     }
 
-    public function show($id_ot)
+    public function show($id)
     {
-        $ot = Ot::findOrFail($id_ot);
+        $ot = Ot::findOrFail($id);
         return view('ot.show',compact('ot'));
     }
 
-    public function edit($id_ot)
+    public function edit($id)
     {
-        $ot = Ot::find($id_ot);
-        $clientex = Cliente::where('id_cliente','=',$ot->cliente_id)->get();
-        $clientez = $ot->clientes()->where('id_cliente', $ot->cliente_id)->exists();
+        $ot = Ot::find($id);
+        $clientex = Cliente::where('id','=',$ot->cliente_id)->get();
+        $clientez = $ot->clientes()->where('id', $ot->cliente_id)->exists();
 
         $cliente = Cliente::find($ot->cliente_id)->pluck('nombreempresa');
         //dd($ot,$clientex,$cliente);
-        $item=Item::where('ot_id','=',$id_ot)->get();
+        $item=Item::where('ot_id','=',$id)->get();
         //$item = $ot->items()->where('caca', $ot->cliente_id)->get();
         //$item = Item::find($ot_id->);
 
@@ -80,7 +85,7 @@ class OtsController extends Controller
         return view('ot.edit')->with(compact('ot','cliente','item','clientex'));
     }
 
-    public function update(Request $request, $id_ot )
+    public function update(Request $request, $id )
     {
         //dd($request,$id_ot);
 /*         $item = Item::find($request->item_id);
@@ -103,12 +108,12 @@ class OtsController extends Controller
         $cliente->fill($request->all());
         $cliente->save();
 
-        $ot = Ot::findOrFail($id_ot);
+        $ot = Ot::findOrFail($id);
         $ot->fill($request->all());
         $ot->save();
 
         $data=$request->all();
-        $lastid=Ot::create($data)->id_ot;
+        $lastid=Ot::create($data)->id;
 
         if(count($request->nombreitem) > 0)
         {
@@ -129,9 +134,9 @@ class OtsController extends Controller
 
     }
 
-    public function destroy($id_ot)
+    public function destroy($id)
     {
-        $ot = Ot::find($id_ot);
+        $ot = Ot::find($id);
         $ot->condicion='0';
         $ot->update();
         //$ot->delete();
@@ -140,9 +145,9 @@ class OtsController extends Controller
     }
 
     // NUEVA FUNCION PARA LLENAR TABLA ITEM
-    public function items($id_ot)
+    public function items($id)
     {
-        $item=Item::where('ot_id','=',$id_ot)->get();
+        $item=Item::where('ot_id','=',$id)->get();
         return view('ot.items',compact('item'));
     }
 

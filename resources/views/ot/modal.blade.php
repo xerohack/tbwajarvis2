@@ -17,31 +17,31 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="nombrecliente">Nombre</label>
-                            <input type="text" class="form-control" id="nombrecliente" name="nombrecliente" placeholder="Ingresa nombre" required="required"><br>
+                            <input type="text" class="form-control" id="nombrecliente" name="nombrecliente" placeholder="Ingresa nombre" required="required" maxlength="30"><br>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="apellidocliente">Apellido</label>
-                            <input type="text" class="form-control" id="apellidocliente" name="apellidocliente" placeholder="Ingresa Apellidos" required="required"><br>
+                            <input type="text" class="form-control" id="apellidocliente" name="apellidocliente" placeholder="Ingresa Apellidos" required="required" maxlength="30"><br>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="emailcliente">Email de contacto</label>
-                            <input type="email" class="form-control" id="emailcliente" name="emailcliente" placeholder="Ingresa Correo" required="required"><br>
+                            <input type="email" class="form-control" id="emailcliente" name="emailcliente" placeholder="Ingresa Correo" required="required" maxlength="100"><br>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group ">
                             <label for="telefonocliente">Teléfono</label>
-                            <input type="number" class="form-control" id="telefonocliente" name="telefonocliente" placeholder="Ingresa Teléfono">
+                            <input type="text" class="form-control" id="telefonocliente" name="telefonocliente" placeholder="Ingresa Teléfono" maxlength="12">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group ">
                             <label for="areacliente">Area</label>
-                            <input type="text" class="form-control" id="areacliente" name="areacliente" placeholder="Ingresa area">
+                            <input type="text" class="form-control" id="areacliente" name="areacliente" placeholder="Ingresa area" maxlength="30">
                         </div>
                     </div>
 
@@ -51,25 +51,25 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="nombreempresa">Razón social / Nombre</label>
-                            <input type="text" class="form-control" id="nombreempresa" name="nombreempresa" placeholder="Ingresa Nombre" required="required"><br>
+                            <input type="text" class="form-control" id="nombreempresa" name="nombreempresa" placeholder="Ingresa Nombre" required="required" maxlength="200"><br>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="rutempresa">Rut</label>
-                            <input type="text" class="form-control" id="rutempresa" name="rutempresa" placeholder="Ingresa RUT.: Ej.11111111-1" required="required"><br><br>
+                            <input type="text" class="form-control" id="rutempresa" name="rutempresa" placeholder="Ingresa RUT.: Ej. 11111111-1" required="required" maxlength="10"><br><br>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group ">
                             <label for="giroempresa">Giro</label>
-                            <input type="text" class="form-control" id="giroempresa" name="giroempresa" placeholder="Ingresa Giro" required="required"><br><br>
+                            <input type="text" class="form-control" id="giroempresa" name="giroempresa" placeholder="Ingresa Giro" required="required" maxlength="50"><br><br>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group ">
                             <label for="direccionempresa">Dirección</label>
-                            <input type="text" class="form-control" id="direccionempresa" name="direccionempresa" placeholder="Ingresa Dirección" required="required"><br><br>
+                            <input type="text" class="form-control" id="direccionempresa" name="direccionempresa" placeholder="Ingresa Dirección" required="required" maxlength="100"><br><br>
                             <input type="hidden" name="agregar" value="agregar">
                         </div>
                     </div>

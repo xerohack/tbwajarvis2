@@ -9,7 +9,7 @@
 @endsection
 
 @section('main-content')
-<div class="container">
+<div class="container-fluid spark-screen">
     <div class="row">
                 <div class="col-md-12">
                 @include('flash::message')
@@ -43,11 +43,11 @@
                             </div>
                             <div class="form-group">
                                 {!! Form::label('tema','Tema') !!}
-                                {!! Form::text('tema', null, ['class' => 'form-control', 'required', 'placeholder' => 'Ingrese Tema']) !!}
+                                {!! Form::text('tema', null, ['class' => 'form-control', 'required', 'placeholder' => 'Ingrese Tema','maxlength' => 100]) !!}
                             </div>
                             <div class="form-group">
                                 {!! Form::label('campana','Producto/Campaña') !!}
-                                {!! Form::text('campana', null, ['class' => 'form-control', 'required', 'placeholder' => 'Ingrese Producto/Campaña']) !!}
+                                {!! Form::text('campana', null, ['class' => 'form-control', 'required', 'placeholder' => 'Ingrese Producto/Campaña','maxlength' => 100]) !!}
                             </div>
                             <div class="form-group">
                                 {!! Form::label('departamento','Departamento') !!}
@@ -55,7 +55,7 @@
                             </div>
                             <div class="form-group">
                                 {!! Form::label('ejecutivores','Ejecutivo responsable') !!}
-                                {!! Form::text('ejecutivores', null, ['class' => 'form-control', 'required', 'placeholder' => 'Ingrese ejecutivo responsable']) !!}
+                                {!! Form::text('ejecutivores', null, ['class' => 'form-control', 'required', 'placeholder' => 'Ingrese ejecutivo responsable','maxlength' => 50]) !!}
                             </div>
                         </div> <!-- Cierra colummna 1-->
                         <div class="col-md-6"> <!-- Aqui va columna dos-->
@@ -78,7 +78,7 @@
                             </div>
                             <div class="form-group">
                             {!! Form::label('url','URL') !!}
-                            {!! Form::text('url', null, ['class' => 'form-control', 'placeholder' => 'Ingrese URL (Opcional)']) !!}
+                            {!! Form::text('url', null, ['class' => 'form-control', 'placeholder' => 'Ingrese URL (Opcional)','maxlength' => 300]) !!}
                             </div>
                             <div class="form-group">
                                 {!! Form::label('archivo','Adjuntar archivo') !!}
@@ -86,7 +86,7 @@
                             </div>
                             {{-- {!! Form::close() !!} --}}
                         </div> <!-- Cierra colummna 2-->
-                        <div class="box-body">
+                        <div class="box-body"><!-- /.box-body2 -->
                             <div class="col-md-12">
                                 <div class="box-header with-border">
                                     <h3 style="text-align:center;">Detalle OT</h3>
@@ -106,14 +106,14 @@
                                                         <th>Nombre de Pieza</th>
                                                         <th>Cantidad</th>
                                                         <th>Valor</th>
-                                                        <th>Detalle</th>
+                                                        <th>Detalle (max 10.000 carácteres)</th>
                                                     </tr>
                                                     <tr>
                                                         <td><button type="button" class="btn btn-danger remove" onclick="eliminarFila()"><i class="glyphicon glyphicon-remove"></i></button></td>
-                                                        <td>{!! Form::text('nombreitem[]', null, ['class' => 'form-control', 'placeholder' => 'Nombre item','required']) !!}</td>
+                                                        <td>{!! Form::text('nombreitem[]', null, ['class' => 'form-control', 'placeholder' => 'Nombre item','required','maxlength' => 100]) !!}</td>
                                                         <td>{!! Form::number('cantidaditem[]', null, ['class' => 'form-control', 'placeholder' => 'Cantidad','required']) !!}</td>
                                                         <td>{!! Form::text('valoritem[]', null, ['class' => 'form-control', 'placeholder' => 'Valor','required']) !!}</td>
-                                                        <td colspan="7" class="col-12 col-sm-6 col-md-6">{!! Form::textarea('detalleitem[]', null, ['class' => 'form-control', 'placeholder' => 'Detalle del item','required']) !!}</td>
+                                                        <td colspan="7" class="col-12 col-sm-6 col-md-6">{!! Form::textarea('detalleitem[]', null, ['class' => 'form-control', 'placeholder' => 'Detalle del item','required','maxlength' => 10000 ]) !!}</td>
                                                     </tr>
                                                 </tbody>
                                                 <tfoot>
@@ -126,7 +126,8 @@
                             <div class="form-group">
                                 {!! Form::submit('Ingresar', ['class' => 'btn btn-block btn-success btn-lg']) !!}
                             </div>
-                        </div>
+                        </div><!-- /.box-body2 -->
+
                     </div> <!-- /.Cierra row-->
                     </div> <!-- /.box-body -->
 

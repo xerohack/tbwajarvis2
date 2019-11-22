@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Ot extends Model
 {
     protected $table='ots';
-    protected $primaryKey ='id_ot';
+    protected $primaryKey ='id';
     protected $fillable = [
         'cliente_id',
         'tema',

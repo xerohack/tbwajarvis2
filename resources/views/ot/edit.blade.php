@@ -27,7 +27,7 @@
                 <div class="box-body">
                     <div class="row">
                         <!-- Aqui va el formulario-->
-                        {!! Form::open(['route' => ['ots.update', $ot->id_ot], 'method' => 'PUT']) !!}                        {{-- {!! Form::token() !!} --}}
+                        {!! Form::open(['route' => ['ots.update', $ot->id], 'method' => 'PUT']) !!}                        {{-- {!! Form::token() !!} --}}
                         <div class="col-md-6"> <!-- Aqui va columna uno-->
                             <div class="form-group">
                                 {!! Form::label('cliente','Cliente') !!}

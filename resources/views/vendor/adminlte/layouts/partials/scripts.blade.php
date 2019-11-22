@@ -10,6 +10,9 @@
 <script src="{{ asset('/js/jquery.rut.js') }}"></script>
 
 <script src="{{ asset('/js/bootstrap-select.min.js') }}"></script>
+{{-- <script src="{{ asset('/js/bootstrap.js') }}"></script>--}}
+{{-- <script src="{{ asset('/js/bootstrap.min.js') }}"></script> --}}
+
 
 <!-- Datetimepicker JS -->
 <script src="{{ asset('/datetimepicker/build/jquery.datetimepicker.full.min.js') }}"></script>

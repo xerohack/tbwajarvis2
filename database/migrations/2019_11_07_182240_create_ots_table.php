@@ -9,7 +9,7 @@ class CreateOtsTable extends Migration
     public function up()
     {
         Schema::create('ots', function (Blueprint $table) {
-            $table->increments('id_ot');
+            $table->increments('id');
             $table->integer('cliente_id');
             $table->string('tema');
             $table->string('campana');

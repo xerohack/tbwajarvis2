@@ -12,6 +12,7 @@
 	<div class="container-fluid spark-screen">
 		<div class="row">
 			<div class="col-md-12 col-md-offset-0">
+                @include('flash::message')
 
 				<!-- Default box -->
 				<div class="box">
@@ -45,8 +46,8 @@
                                 @foreach ($ots as $ot)
                                     @if($ot->condicion == 1)
                                     <tr>
-                                        <td>{{$ot->id_ot}}</td>
-                                        <td>{{$ot->cliente_id}}</td>
+                                        <td>{{$ot->id}}</td>
+                                        <td>{{$ot->clientes}}</td>
                                         <td>{{$ot->tema}}</td>
                                         <td>{{$ot->campana}}</td>
                                         <td>{{$ot->departamento}}</td>
@@ -55,26 +56,24 @@
                                         <td>{{$ot->created_at}}</td>
                                         <td>{{$ot->fechaentrega}}</td>
                                         <td>
-                                        <a href="{{ route('ots.edit', $ot->id_ot) }}" class="btn btn-primary fa fa-pencil"></a>
-                                        <a>{!! Form::open(['action' => ['OtsController@destroy', $ot->id_ot], 'method' => 'delete']) !!}
+                                        <a href="{{ route('ots.edit', $ot->id) }}" class="btn btn-primary fa fa-pencil"></a>
+                                        <a>{!! Form::open(['action' => ['OtsController@destroy', $ot->id], 'method' => 'delete']) !!}
                                                 <button type="submit" onclick="return confirm('¿Seguro que desea eliminar la OT?')" class='btn btn-danger fa fa-trash'></button>
                                             {!! Form::close() !!}</a>
                                         </td>
                                     </tr>
-
                                     @endif
                                 @endforeach
                             </tbody>
 
                         </table>
-                        {{-- {!! $ots->render()!!} --}}
+                        {!! $ots->render()!!}
 
 						{{-- {{ trans('adminlte_lang::message.logged') }}. USUARIOS {{ Auth::ot()->nombre }} --}}
 					</div>
 					<!-- /.box-body -->
 				</div>
 				<!-- /.box -->
-
 			</div>
 		</div>
 	</div>
