@@ -8,11 +8,11 @@
     Lista de ordenes de trabajo
 @endsection
 
-
 @section('main-content')
 	<div class="container-fluid spark-screen">
 		<div class="row">
 			<div class="col-md-12 col-md-offset-0">
+                @include('flash::message')
 
 				<!-- Default box -->
 				<div class="box">
@@ -34,7 +34,7 @@
                                 <th>ID</th>
                                 <th>Cliente</th>
                                 <th>Tema</th>
-                                <th>Producto</th>
+                                <th>Producto/Campaña</th>
                                 <th>Departamento</th>
                                 <th>Ejecutivo responsable</th>
                                 <th>Estado</th>
@@ -44,33 +44,37 @@
                             </thead>
                             <tbody>
                                 @foreach ($ots as $ot)
-                                <tr>
-                                    <td>{{$ot->id}}</td>
-                                    <td>{{$ot->cliente}}</td>
-                                    <td>{{$ot->tema}}</td>
-                                    <td>{{$ot->producto}}</td>
-                                    <td>{{$ot->departamento}}</td>
-                                    <td>{{$ot->ejecutivores}}</td>
-                                    <td>{{$ot->estado}}</td>
-                                    <td>{{$ot->created_at}}</td>
-                                    <td>{{$ot->fechaentrega}}</td>
-                                    <td>
-                                    <a href="{{ route('ots.edit', $ot->id) }}" class="btn btn-primary fa fa-pencil"></a>
-                                    <a href="{{ route('admin.ots.destroy', $ot->id) }}" class="btn btn-danger fa fa-trash" onclick="return confirm('¿Está seguro que desea eliminar la orden de trabajo {{$ot->id}}?')"></a>
-                                    </td>
-                                </tr>
+                                    @if($ot->condicion == 1)
+                                    <tr>
+                                        <td>{{$ot->id}}</td>
+                                        <td>{{$ot->cliente_id/* ->nombreempresa */}}</td>
+                                        {{-- <td>{!! $ot->clientes->nombreempresa!!} </td> --}}
+                                        <td>{{$ot->tema}}</td>
+                                        <td>{{$ot->campana}}</td>
+                                        <td>{{$ot->departamento}}</td>
+                                        <td>{{$ot->ejecutivores}}</td>
+                                        <td>{{$ot->estado}}</td>
+                                        <td>{{$ot->created_at}}</td>
+                                        <td>{{$ot->fechaentrega}}</td>
+                                        <td>
+                                        <a href="{{ route('ots.edit', $ot->id) }}" class="btn btn-primary fa fa-pencil"></a>
+                                        <a>{!! Form::open(['action' => ['OtsController@destroy', $ot->id], 'method' => 'delete']) !!}
+                                                <button type="submit" onclick="return confirm('¿Seguro que desea eliminar la OT?')" class='btn btn-danger fa fa-trash'></button>
+                                            {!! Form::close() !!}</a>
+                                        </td>
+                                    </tr>
+                                    @endif
                                 @endforeach
                             </tbody>
 
                         </table>
-                        {!! $ots->render()!!}
+                        {{-- {!! $ots->render()!!} --}}
 
 						{{-- {{ trans('adminlte_lang::message.logged') }}. USUARIOS {{ Auth::ot()->nombre }} --}}
 					</div>
 					<!-- /.box-body -->
 				</div>
 				<!-- /.box -->
-
 			</div>
 		</div>
 	</div>

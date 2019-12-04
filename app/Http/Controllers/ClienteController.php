@@ -10,7 +10,6 @@ class ClienteController extends Controller
 {
     public function index()
     {
-        //$clientes = Cliente::all();
         $clientes = Cliente::orderBy('id', 'DESC')->paginate(25);
         //dd($clientes);
         return view('admin.clientes.index')->with('clientes', $clientes);
@@ -20,6 +19,7 @@ class ClienteController extends Controller
     {
         //$clientes = Cliente::all()->pluck('nombrecliente');
         //return view('ot.create')->with('cliente',$clientes);
+        return view('cliente.create');
     }
 
     public function store(Request $request)

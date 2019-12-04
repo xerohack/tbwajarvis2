@@ -29,53 +29,70 @@
                     <div class="box-body">
                         <!-- Aqui va el formulario-->
 
-                        <h3>Ingrese los datos para el nuevo usuario</h3>
                         <br>
-                        {!! Form::open(['route' => 'users.store', 'method' => 'POST']) !!}
+                        {!! Form::open(['route' => 'users.store', 'method' => 'POST','class' => 'form-horizontal']) !!}
                         {{ csrf_field() }}
 
                             <div class="form-group">
-                                {!! Form::label('nombre','Nombre') !!}
+                                {!! Form::label('nombre','Nombre',['class' => 'col-sm-2 control-label']) !!}
+                                <div class="col-sm-10">
                                 {!! Form::text('nombre', null, ['class' => 'form-control', 'required', 'placeholder' => 'Nombre']) !!}
+                                </div>
                             </div>
 
                             <div class="form-group">
-                                {!! Form::label('apellido','Apellido') !!}
+                                {!! Form::label('apellido','Apellido',['class' => 'col-sm-2 control-label']) !!}
+                                <div class="col-sm-10">
                                 {!! Form::text('apellido', null, ['class' => 'form-control', 'required', 'placeholder' => 'Apellido']) !!}
+                                </div>
                             </div>
 
                             <div class="form-group">
-                                    {!! Form::label('rut','Rut') !!}
+                                    {!! Form::label('rut','Rut',['class' => 'col-sm-2 control-label']) !!}
+                                    <div class="col-sm-10">
                                     {!! Form::text('rut', null, ['class' => 'form-control', 'required', 'placeholder' => 'Rut']) !!}
+                                    </div>
                             </div>
 
                             <div class="form-group">
-                                    {!! Form::label('email','E-MAIL') !!}
+                                    {!! Form::label('email','E-MAIL',['class' => 'col-sm-2 control-label']) !!}
+                                    <div class="col-sm-10">
                                     {!! Form::email('email', null, ['class' => 'form-control', 'required', 'placeholder' => 'E-mail']) !!}
+                                    </div>
                             </div>
 
                             <div class="form-group">
-                                    {!! Form::label('area','Area') !!}
+                                    {!! Form::label('area','Area',['class' => 'col-sm-2 control-label']) !!}
+                                    <div class="col-sm-10">
                                     {!! Form::text('area', null, ['class' => 'form-control', 'required', 'placeholder' => 'Area']) !!}
+                                    </div>
                             </div>
 
                             <div class="form-group">
-                                    {!! Form::label('cargo','Cargo') !!}
+                                    {!! Form::label('cargo','Cargo',['class' => 'col-sm-2 control-label']) !!}
+                                    <div class="col-sm-10">
                                     {!! Form::text('cargo', null, ['class' => 'form-control', 'required', 'placeholder' => 'Cargo']) !!}
+                                    </div>
                             </div>
 
                             <div class="form-group">
-                                    {!! Form::label('rol','Rol') !!}
+                                    {!! Form::label('rol','Rol',['class' => 'col-sm-2 control-label']) !!}
+                                    <div class="col-sm-10">
                                     {!! Form::select('rol', ['administrador' => 'administrador','cliente' => 'cliente'],null, ['class' => 'form-control'] ) !!}
+                                    </div>
                             </div>
 
                             <div class="form-group">
-                                    {!! Form::label('password','Password') !!}
+                                    {!! Form::label('password','Password',['class' => 'col-sm-2 control-label']) !!}
+                                    <div class="col-sm-10">
                                     {!! Form::password('password', ['class' => 'form-control', 'required', 'placeholder' => '********']) !!}
+                                    </div>
                             </div>
                             <hr>
                             <div class="form-group">
+                                <div class="col-sm-12">
                                 {!! Form::submit('Registrar', ['class' => 'btn btn-primary btn-lg btn-block']) !!}
+                                </div>
                             </div>
 
                         {!! Form::close() !!}

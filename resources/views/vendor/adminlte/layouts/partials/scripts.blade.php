@@ -6,12 +6,9 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/momentjs/2.14.1/moment.min.js"></script>
-{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script> --}}
 <script src="{{ asset('/js/jquery.rut.js') }}"></script>
 
 <script src="{{ asset('/js/bootstrap-select.min.js') }}"></script>
-{{-- <script src="{{ asset('/js/bootstrap.js') }}"></script>--}}
-{{-- <script src="{{ asset('/js/bootstrap.min.js') }}"></script> --}}
 
 <!-- Datetimepicker JS -->
 <script src="{{ asset('/datetimepicker/build/jquery.datetimepicker.full.min.js') }}"></script>
@@ -46,49 +43,26 @@
 </script>
 
 <script>
-    /*
-    function agregarFila(){
-    document.getElementById("tablaitem").insertRow(-1).innerHTML = '<tr><td><button type="button" class="btn btn-danger" onclick="eliminarFila()">x</button></td><td>{!!Form::text('nombreitem', null,['class'=>'form-control','placeholder'=>'Nombre item'])!!}</td><td>{!!Form::number('cantidaditem',null,['class'=>'form-control','placeholder'=>'Cantidad'])!!}</td><td>{!!Form::text('valoritem',null,['class'=>'form-control','placeholder'=>'Valor'])!!}</td><td colspan="7" class="col-12 col-sm-6 col-md-6">{!!Form::textarea('detalleitem',null,['class'=>'form-control','placeholder'=>'Detalle del item'])!!}</td></tr>';
-    }
-    */
-
-    function eliminarFila(){
-    var table = document.getElementById("tablaitem");
-    var rowCount = table.rows.length;
-    //console.log(rowCount);
-
-    if(rowCount <= 1)
-        alert('No se puede eliminar el encabezado');
-    else
-        table.deleteRow(rowCount -1);
-    }
-// <!-- PRUEBA DE SCRIPT AGREGAR ROW-->
+// <!-- SCRIPT AGREGAR ROW-->
     function addRow()
     {
         var tr='<tr>'+
-        '<td><button type="button" class="btn btn-danger remove" onclick="eliminarFila()"><i class="glyphicon glyphicon-remove"></i></button></td>'+
-        '<td><input type="text" name="nombreitem[]" class="form-control" placeholder="Nombre item"></td>'+
-        '<td><input type="text" name="cantidaditem[]" class="form-control" placeholder="Cantidad"</td>'+
-        '<td><input type="text" name="valoritem[]" class="form-control" placeholder="Valor"</td>'+
-        '<td colspan="7" class="col-12 col-sm-6 col-md-6">{!! Form::textarea('detalleitem[]', null, ['class' => 'form-control', 'placeholder' => 'Detalle del item']) !!}</td>'+
-        '</tr>'+
-        '<tr>'+
-        '<th colspan="7">Comentario item (Opcional)</th>'+
-        '</tr>'+
-        '<tr>'+
-        '<th colspan="7">{!! Form::textarea('comentarioitem[]', null, ['class' => 'form-control', 'placeholder' => 'Inserte un comentario','required','maxlength' => 10000 ]) !!}</th>'+
-        '</tr>';
+                '<td><button type="button" class="btn btn-danger remove borrar" onclick="eliminarFila()"><i class="glyphicon glyphicon-remove"></i></button></td>'+
+                '<td>{!! Form::text('nombreitem[]', null, ['class' => 'form-control', 'placeholder' => 'Nombre item','required','maxlength' => 100]) !!}</td>'+
+                '<td>{!! Form::number('cantidaditem[]', null, ['class' => 'form-control', 'placeholder' => 'Cantidad','required','min'=>'0']) !!}</td>'+
+                '<td>{!! Form::number('valoritem[]', null, ['class' => 'form-control', 'placeholder' => 'Valor','required','min'=>'0']) !!}</td>'+
+                '<td>{!! Form::textarea('detalleitem[]', null, ['class' => 'form-control', 'placeholder' => 'Características del ítem','required','maxlength' => 10000,'rows'=>5 ]) !!}</td>'+
+                '<td>{!! Form::textarea('comentarioitem[]', null, ['class' => 'form-control', 'placeholder' => 'Cambios realizados','maxlength' => 10000,'rows'=>5 ]) !!}</td>'+
+                '</tr>';
         $('tbody').append(tr);
     };
+
+// ELIMINAR FILA
+    function eliminarFila(){
+    $(document).on('click', '.borrar', function (event) {
+        event.preventDefault();
+        $(this).closest('tr').remove();
+        });
+    }
 </script>
 
-
-
-
-
-
-
-<!-- Optionally, you can add Slimscroll and FastClick plugins.
-      Both of these plugins are recommended to enhance the
-      user experience. Slimscroll is required when using the
-      fixed layout. -->

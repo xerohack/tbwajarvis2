@@ -8,41 +8,29 @@ use App\Item;
 
 use Illuminate\Http\Request;
 
-use Validator;
-
-
 class OtsController extends Controller
 {
     public function index()
     {
         $ots = Ot::orderBy('id', 'DESC')->paginate(20);
-        $ots->each(function($ots){
+        $clientes = Cliente::all();
+        /* $ots->each(function($ots){
         $ots->clientes;
-        });
-        //dd($ots);
+        }); */
 
-        return view('ot.index')->with('ots', $ots);
-
-/*         $ots= Ot::all();
-
-        //dd($prestamos);
-
-        return view('ot.index')->with('ots',$ots); */
+        return view('ot.index')->with('ots', $ots, 'clientes',$clientes);
     }
 
     public function create()
     {
-        $clientes = Cliente::all()->pluck('nombreempresa');
-
-        return view('ot.create')->with('cliente',$clientes);
+        //clientes se llama desde una funcion en app/Services/Cliente
+        return view('ot.create');
     }
 
     public function store(Request $request)
     {
-        $cliente=Cliente::find($request->cliente_id);
-        //$cliente = new Cliente($request->all());
-
         //dd($request);
+        $cliente=Cliente::find($request->cliente_id);
 
         $data=$request->all();
         $lastid=Ot::create($data)->id;
@@ -56,11 +44,13 @@ class OtsController extends Controller
                 'nombreitem'=>$request->nombreitem[$item],
                 'cantidaditem'=>$request->cantidaditem[$item],
                 'valoritem'=>$request->valoritem[$item],
-                'detalleitem'=>$request->detalleitem[$item]
+                'detalleitem'=>$request->detalleitem[$item],
+                'comentarioitem'=>$request->comentarioitem[$item]
             );
         Item::insert($data2);
             }
         }
+
         $cliente->save();
         flash('¡OT creada exitosamente!')->success();
         return redirect()->back();
@@ -68,87 +58,69 @@ class OtsController extends Controller
 
     public function show($id)
     {
-        $ots = Ot::findOrFail($id);
-        return view('ot.show',compact('ots'));
+/*         $ots = Ot::findOrFail($id);
+        return view('ot.show',compact('ots')); */
     }
 
     public function edit($id)
     {
         $ot = Ot::find($id);
-        $clientex = Cliente::where('id','=',$ot->cliente_id)->get();
-        $clientez = $ot->clientes()->where('id', $ot->cliente_id)->exists();
+        $ot->cliente;
+        $clientes = Cliente::all()->pluck('nombreempresa','id');
+        $item = Item::where('ot_id','=',$ot->id)->get();
 
-        $cliente = Cliente::find($ot->cliente_id)->pluck('nombreempresa');
-        //dd($ot,$clientex,$cliente);
-        $item=Item::where('ot_id','=',$id)->get();
-        //$item = $ot->items()->where('caca', $ot->cliente_id)->get();
-        //$item = Item::find($ot_id->);
-
-        //dd($ot,$cliente,$item);
-        //$item=Item::where('ot_id','=',$id_ot)->get();
-        //$cliente = Cliente::where('id_cliente','=',$ot->cliente_id)->get();
-        //dd($cliente);
-        //return view('ot.edit')->with('ot', $ot);
-        return view('ot.edit')->with(compact('ot','cliente','item','clientex'));
+        return view ('ot.edit')
+            ->with('clientes',$clientes)
+            ->with('item',$item)
+            ->with('ot',$ot);
     }
 
-    public function update(Request $request, $id )
+    public function update(Request $request, $id)
     {
-        //dd($request,$id_ot);
-/*         $item = Item::find($request->item_id);
-        $item->fill($request->all());
-        $item->save();
-
-        $ot = Ot::find($id_ot);
+        //dd($request,$id);
+        $ot = Ot::find($id);
         $ot->fill($request->all());
         $ot->save();
 
         $cliente = Cliente::find($request->cliente_id);
-        $cliente->fill($request->all());
+        $cliente->update();
         $cliente->save();
 
-        return redirect()->route('ot.index')->with('update','Edición Exitosa'); */
+        $item = Item::find($id);
+        $item->update();
 
-        //--------------------------------------------------//
-
-        $cliente=Cliente::findOrFail($request->cliente_id);
-        $cliente->fill($request->all());
-        $cliente->save();
-
-        $ot = Ot::findOrFail($id);
-        $ot->fill($request->all());
-        $ot->save();
-
-        $data=$request->all();
+/*         $data=$request->all();
         $lastid=Ot::create($data)->id;
 
         if(count($request->nombreitem) > 0)
         {
-            foreach($request->nombreitem as $item=>$v)
+        foreach($request->nombreitem as $item=>$v)
             {
-                $data2=array(
-                    'ot_id'=>$lastid,
-                    'nombreitem'=>$request->nombreitem[$item],
-                    'cantidaditem'=>$request->cantidaditem[$item],
-                    'valoritem'=>$request->valoritem[$item],
-                    'detalleitem'=>$request->detalleitem[$item]
-                );
-            Item::insert($data2);
+            $data2=array(
+                'ot_id'=>$lastid,
+                'nombreitem'=>$request->nombreitem[$item],
+                'cantidaditem'=>$request->cantidaditem[$item],
+                'valoritem'=>$request->valoritem[$item],
+                'detalleitem'=>$request->detalleitem[$item],
+                'comentarioitem'=>$request->comentarioitem[$item]
+            );
+        Item::insert($data2);
             }
-        }
+        } */
 
-        return redirect()->back()->with('success','¡OT creada exitosamente!');
-
+        flash('¡OT actualizada exitosamente!')->success();
+        return redirect()->back();
     }
 
     public function destroy($id)
     {
+        //dd($id);
         $ot = Ot::find($id);
         $ot->condicion='0';
         $ot->update();
-        //$ot->delete();
 
-        return redirect()->back()->with('delete','OT eliminada');
+        flash('¡OT eliminada exitosamente!')->error();
+        return redirect()->back();
     }
 
     // NUEVA FUNCION PARA LLENAR TABLA ITEM

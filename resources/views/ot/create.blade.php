@@ -17,7 +17,7 @@
 
                 <div class="box">
                     <div class="box-header with-border">
-                        <h3 style="text-align:center; text-decoration: underline black;">Formulario OT</h3>
+                        <h3 style="text-align:center; text-decoration: underline black;">Informacion general</h3>
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
                                 <i class="fa fa-minus"></i></button>
@@ -29,8 +29,7 @@
                     <div class="row">
                         <!-- Aqui va el formulario-->
                         {!! Form::open(['route' => 'ots.store', 'method' => 'POST', 'enctype' => 'multipart/form-data', 'autocomplete'=>'off']) !!}
-                        {{-- {!! Form::open(array('url'=> 'ots.store', 'method' => 'POST','autocomplete'=>'off', 'enctype' => 'multipart/form-data')) !!} --}}
-                        {{-- {!! Form::token() !!} --}}
+
                         <div class="col-md-6"> <!-- Aqui va columna uno-->
                             <div class="form-group">
                                 {!! Form::label('cliente','Cliente') !!}
@@ -41,6 +40,7 @@
                                     <select id="cliente" name="cliente_id" class="form-control{{ $errors->has('cliente_id') ? ' is-invalid' : '' }} selectpicker" data-live-search="true">
                                         @foreach($clientes->get() as $index => $cliente)
                                             <option value="{{ $index }}" {{ old('cliente_id') == $index ? 'selected' : '' }}>
+                                                {{-- {{ $cliente->nombreempresa }} - {{ $cliente->nombrecliente }} --}}
                                                 {{ $cliente }}
                                             </option>
                                         @endforeach
@@ -52,11 +52,6 @@
                                         </span>
                                     @endif
 
-                                {{-- {!! Form::select('cliente_id', $products, $selectedID, ['class' => 'form-control']) !!} --}}
-                                {{-- <button type="button" class="btn btn-primary btn-xs pull-right" style="margin-right:10px;" data-toggle="modal" data-target="#addCli">
-                                    Nuevo cliente
-                                </button> --}}
-                                {{-- {!! Form::select('cliente_id',$cliente, null, ['id'=>'cliente','class' => 'form-control selectpicker', 'placeholder' => 'Seleccione cliente', 'required', 'data-live-search' => 'true']) !!} --}}
                             </div>
                             <div class="form-group">
                                 {!! Form::label('tema','Tema') !!}
@@ -99,7 +94,7 @@
                             </div>
                             <div class="form-group">
                                 {!! Form::label('archivo','Adjuntar archivo') !!}
-                                {!! Form::file('file_archivo', ['class' => 'form-group' ]) !!}
+                                {!! Form::file('file_archivo', ['class' => 'form-control' ]) !!}
                             </div>
                             {{-- {!! Form::close() !!} --}}
 
@@ -107,14 +102,14 @@
                         <div class="col-md-12"><!-- COMENTARIO OT-->
                             <div class="box-header with-border" style="background-color:#f4f4f4;border-radius: 15px;">
                                     {!! Form::label('comentariot','Comentario (Opcional)') !!}
-                                    {!! Form::textarea('comentariot', null, ['class' => 'form-control', 'placeholder' => 'Inserte un comentario','required','maxlength' => 10000 ]) !!}
+                                    {!! Form::textarea('comentariot', null,['class'=>'form-control','placeholder'=>'Inserte un comentario','maxlength'=>10000,'rows'=>5 ]) !!}
                             </div>
                         </div> <!-- Cierra COMENTARIO OT-->
 
                         <div class="box-body"><!-- /.box-body2 -->
                             <div class="col-md-12">
                                 <div class="box-header with-border">
-                                    <h3 style="text-align:center;">Detalle OT</h3>
+                                    <h3 style="text-align:center; text-decoration: underline black;">Detalle OT</h3>
 
                                     <div class="table-responsive">
                                             <table class="table table-bordered table-responsive" style="background:#eee" id="tablaitem">
@@ -131,25 +126,27 @@
                                                         <th>Nombre de Pieza</th>
                                                         <th>Cantidad</th>
                                                         <th>Valor</th>
-                                                        <th>Detalle (max 10.000 carácteres)</th>
+                                                        <th>Detalle Item</th>
+                                                        <th>Seguimiento Item</th>
                                                     </tr>
                                                     <tr>
-                                                        <td><button type="button" class="btn btn-danger remove" onclick="eliminarFila()"><i class="glyphicon glyphicon-remove"></i></button></td>
+                                                        <td><button type="button" class="btn btn-danger remove borrar" onclick="eliminarFila()"><i class="glyphicon glyphicon-remove"></i></button></td>
                                                         <td>{!! Form::text('nombreitem[]', null, ['class' => 'form-control', 'placeholder' => 'Nombre item','required','maxlength' => 100]) !!}</td>
-                                                        <td>{!! Form::number('cantidaditem[]', null, ['class' => 'form-control', 'placeholder' => 'Cantidad','required']) !!}</td>
-                                                        <td>{!! Form::text('valoritem[]', null, ['class' => 'form-control', 'placeholder' => 'Valor','required']) !!}</td>
-                                                        <td colspan="7" class="col-12 col-sm-6 col-md-6">{!! Form::textarea('detalleitem[]', null, ['class' => 'form-control', 'placeholder' => 'Detalle del item','required','maxlength' => 10000 ]) !!}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th colspan="7">Comentario item (Opcional)</th>
-                                                    </tr>
-                                                    <tr>
-                                                        <th colspan="7">
-                                                                {!! Form::textarea('comentarioitem[]', null, ['class' => 'form-control', 'placeholder' => 'Inserte un comentario','required','maxlength' => 10000 ]) !!}
-                                                        </th>
+                                                        <td>{!! Form::number('cantidaditem[]', null, ['class' => 'form-control', 'placeholder' => 'Cantidad','required','min'=>'0']) !!}</td>
+                                                        <td>{!! Form::number('valoritem[]', null, ['class' => 'form-control', 'placeholder' => 'Valor','required','min'=>'0']) !!}</td>
+                                                        <td>{!! Form::textarea('detalleitem[]', null, ['class' => 'form-control', 'placeholder' => 'Características del ítem','required','maxlength' => 10000,'rows'=>5 ]) !!}</td>
+                                                        <td>{!! Form::textarea('comentarioitem[]', null, ['class' => 'form-control', 'placeholder' => 'Cambios realizados','maxlength' => 10000,'rows'=>5 ]) !!}</td>
                                                     </tr>
                                                 </tbody>
                                                 <tfoot>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td>(max 10.000 carácteres)</td>
+                                                        <td>(max 10.000 carácteres)</td>
+                                                    </tr>
 
                                                 </tfoot>
                                             </table>

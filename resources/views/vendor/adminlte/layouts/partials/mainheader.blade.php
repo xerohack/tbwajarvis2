@@ -2,7 +2,7 @@
 <header class="main-header">
 
     <!-- Logo -->
-    <a href="{{ url('/home') }}" class="logo" style="background-color: rgb(254,190,0)">
+    <a href="{{ url('/home') }}" class="logo" style="background-color: #fccc04">
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini"><b style="color:black;font-weight:bold;font-size:40px">\</b></span>
         <!-- logo for regular state and mobile devices -->
@@ -10,7 +10,7 @@
     </a>
 
     <!-- Header Navbar -->
-    <nav class="navbar navbar-static-top" role="navigation" style="background-color: rgb(254,204,0)  !important;">
+    <nav class="navbar navbar-static-top" role="navigation" style="background-color: #fccc04 !important;">
         <!-- Sidebar toggle button-->
         <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
             <span class="sr-only">{{ trans('adminlte_lang::message.togglenav') }}</span>
@@ -123,7 +123,7 @@
                         </a>
                         <ul class="dropdown-menu">
                             <!-- The user image in the menu -->
-                            <li class="user-header" style="background-color: rgb(254,204,0)  !important;">
+                            <li class="user-header" style="background-color: #fccc04 !important;">
                                 <img src="{{ Gravatar::get($user->email) }}" class="img-circle" alt="User Image" />
                                 <p>
                                     <span data-toggle="tooltip" title="{{ Auth::user()->email }}">{{ Auth::user()->email }}</span>

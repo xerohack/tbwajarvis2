@@ -54,16 +54,16 @@
             <li class="treeview">
                 <a href="#"><i class='fa fa-file-text'></i> <span>Orden de compra</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
-                <li><a href="#{{-- {{ route('ots.create')}} --}}"><i class='fa fa-sticky-note-o'></i> <span>Crear OC</span></a></li>
-                <li><a href="#{{-- {{ route('ots.create')}} --}}"><i class='fa fa-eye'></i> <span>Ver OCs</span></a></li>
+                <li><a href="{{ route('oc.create')}}"><i class='fa fa-sticky-note-o'></i> <span>Crear OC</span></a></li>
+                <li><a href="{{ route('oc.index')}}"><i class='fa fa-eye'></i> <span>Ver OCs</span></a></li>
                 </ul>
             </li>
 
             <li class="treeview">
                 <a href="#"><i class='fa fa-file-powerpoint-o'></i> <span>Presupuesto</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
-                <li><a href="#{{-- {{ route('ots.create')}} --}}"><i class='fa fa-sticky-note-o'></i> <span>Crear presupuesto</span></a></li>
-                <li><a href="#{{-- {{ route('ots.create')}} --}}"><i class='fa fa-eye'></i> <span>Ver presupuestos</span></a></li>
+                <li><a href="{{ route('presupuesto.create')}}"><i class='fa fa-sticky-note-o'></i> <span>Crear presupuesto</span></a></li>
+                <li><a href="{{ route('presupuesto.index')}}"><i class='fa fa-eye'></i> <span>Ver presupuestos</span></a></li>
                 </ul>
             </li>
         </ul><!-- /.sidebar-menu -->

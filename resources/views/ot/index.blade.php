@@ -47,8 +47,7 @@
                                     @if($ot->condicion == 1)
                                     <tr>
                                         <td>{{$ot->id}}</td>
-                                        <td>{{$ot->cliente_id/* ->nombreempresa */}}</td>
-                                        {{-- <td>{!! $ot->clientes->nombreempresa!!} </td> --}}
+                                        <td>{{$ot->cliente->nombreempresa}}</td>
                                         <td>{{$ot->tema}}</td>
                                         <td>{{$ot->campana}}</td>
                                         <td>{{$ot->departamento}}</td>
@@ -58,19 +57,18 @@
                                         <td>{{$ot->fechaentrega}}</td>
                                         <td>
                                         <a href="{{ route('ots.edit', $ot->id) }}" class="btn btn-primary fa fa-pencil"></a>
+                                        {{-- <a href="{{ route('ots.destroy', $ot->id) }}" class="btn btn-danger fa fa-trash" onclick="return confirm('¿Está seguro que desea eliminar la OT{{$ot->id}}?')"></a> --}}
+
                                         <a>{!! Form::open(['action' => ['OtsController@destroy', $ot->id], 'method' => 'delete']) !!}
-                                                <button type="submit" onclick="return confirm('¿Seguro que desea eliminar la OT?')" class='btn btn-danger fa fa-trash'></button>
+                                                <button type="submit" onclick="return confirm('¿Seguro que desea eliminar la OT?')" class="btn btn-danger fa fa-trash"></button>
                                             {!! Form::close() !!}</a>
                                         </td>
                                     </tr>
                                     @endif
                                 @endforeach
                             </tbody>
-
                         </table>
-                        {{-- {!! $ots->render()!!} --}}
-
-						{{-- {{ trans('adminlte_lang::message.logged') }}. USUARIOS {{ Auth::ot()->nombre }} --}}
+                        {!! $ots->render()!!}
 					</div>
 					<!-- /.box-body -->
 				</div>

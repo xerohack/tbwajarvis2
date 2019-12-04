@@ -19,31 +19,20 @@ class Ot extends Model
         'notificarcorreo',
         'url',
         'file_archivo',
+        'comentariot',
         'total',
-        'estado'
+        'estado',
+        'condicion'
     ];
 
-    protected $guarded = [
-
-    ];
-
-    public function clientes()
+    public function cliente()
     {
         return $this->belongsTo('App\Cliente');
     }
 
-    public function items()
+    public function item()
     {
         return $this->hasMany('App\Item');
     }
-
-
-    /*
-    public function detalleot()
-    {
-        return $this->belongsTo('App\DetalleOt');
-    }
-    */
-
 
 }

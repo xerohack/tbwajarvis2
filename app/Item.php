@@ -13,7 +13,8 @@ class Item extends Model
     'nombreitem',
     'cantidaditem',
     'valoritem',
-    'detalleitem'
+    'detalleitem',
+    'comentarioitem'
     ];
 
     public function ot(){

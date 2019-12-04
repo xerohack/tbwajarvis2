@@ -53,8 +53,10 @@
                                     <td>{{$user->cargo}}</td>
                                     <td>{{$user->rol}}</td>
                                     <td>{{$user->created_at}}</td>
-                                <td><a href="{{ route('users.edit', $user->id) }}" class="btn btn-primary fa fa-pencil"></a>
-                                    <a href="{{ route('admin.users.destroy', $user->id) }}" class="btn btn-danger fa fa-trash" onclick="return confirm('¿Está seguro que desea eliminar el usuario {{$user->email}}?')"></a></td>
+                                    <td>
+                                        <a href="{{ route('users.edit', $user->id) }}" class="btn btn-primary fa fa-pencil"></a>
+                                        <a href="{{ route('admin.users.destroy', $user->id) }}" class="btn btn-danger fa fa-trash" onclick="return confirm('¿Está seguro que desea eliminar el usuario {{$user->email}}?')"></a>
+                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>
