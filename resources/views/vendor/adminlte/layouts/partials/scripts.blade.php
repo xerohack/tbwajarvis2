@@ -53,6 +53,7 @@
                 '<td>{!! Form::number('valoritem[]', null, ['class' => 'form-control', 'placeholder' => 'Valor','required','min'=>'0']) !!}</td>'+
                 '<td>{!! Form::textarea('detalleitem[]', null, ['class' => 'form-control', 'placeholder' => 'Características del ítem','required','maxlength' => 10000,'rows'=>5 ]) !!}</td>'+
                 '<td>{!! Form::textarea('comentarioitem[]', null, ['class' => 'form-control', 'placeholder' => 'Cambios realizados','maxlength' => 10000,'rows'=>5 ]) !!}</td>'+
+                '<td>{!! Form::text('iditem[]', null,['hidden'=>'true']) !!}</td>'+
                 '</tr>';
         $('tbody').append(tr);
     };

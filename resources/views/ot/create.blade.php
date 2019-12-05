@@ -29,7 +29,7 @@
                     <div class="row">
                         <!-- Aqui va el formulario-->
                         {!! Form::open(['route' => 'ots.store', 'method' => 'POST', 'enctype' => 'multipart/form-data', 'autocomplete'=>'off']) !!}
-
+                        @csrf
                         <div class="col-md-6"> <!-- Aqui va columna uno-->
                             <div class="form-group">
                                 {!! Form::label('cliente','Cliente') !!}
@@ -37,10 +37,9 @@
                                     <button class="btn btn-primary btn-xs pull-right" style="margin-right:10px;" >Nuevo cliente</button>
                                 </a>
 
-                                    <select id="cliente" name="cliente_id" class="form-control{{ $errors->has('cliente_id') ? ' is-invalid' : '' }} selectpicker" data-live-search="true">
+                                    <select id="cliente" name="cliente_id" class="form-control{{ $errors->has('cliente_id') ? ' is-invalid' : '' }} selectpicker" data-live-search="true", required>
                                         @foreach($clientes->get() as $index => $cliente)
                                             <option value="{{ $index }}" {{ old('cliente_id') == $index ? 'selected' : '' }}>
-                                                {{-- {{ $cliente->nombreempresa }} - {{ $cliente->nombrecliente }} --}}
                                                 {{ $cliente }}
                                             </option>
                                         @endforeach
@@ -93,7 +92,7 @@
                             {!! Form::text('url', null, ['class' => 'form-control', 'placeholder' => 'Ingrese URL (Opcional)','maxlength' => 300]) !!}
                             </div>
                             <div class="form-group">
-                                {!! Form::label('archivo','Adjuntar archivo') !!}
+                                {!! Form::label('archivo','Adjuntar archivo (Max. 10MB)') !!}
                                 {!! Form::file('file_archivo', ['class' => 'form-control' ]) !!}
                             </div>
                             {{-- {!! Form::close() !!} --}}

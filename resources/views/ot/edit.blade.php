@@ -125,6 +125,7 @@
                                                     <td>{!! Form::number('valoritem[]',$i->valoritem,['class' => 'form-control', 'placeholder' => 'Valor','required','min'=>'0']) !!}</td>
                                                     <td>{!! Form::textarea('detalleitem[]',$i->detalleitem,['class' => 'form-control', 'placeholder' => 'Características del ítem','required','maxlength' => 10000,'rows'=>5 ]) !!}</td>
                                                     <td>{!! Form::textarea('comentarioitem[]',$i->comentarioitem,['class' => 'form-control', 'placeholder' => 'Cambios realizados','maxlength' => 10000,'rows'=>5 ]) !!}</td>
+                                                    <td>{!! Form::text('iditem[]',$i->id,['hidden'=>'true']) !!}</td>
                                                 </tr>
                                                 @endforeach
 

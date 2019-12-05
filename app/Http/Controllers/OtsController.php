@@ -77,36 +77,31 @@ class OtsController extends Controller
 
     public function update(Request $request, $id)
     {
-        //dd($request,$id);
         $ot = Ot::find($id);
         $ot->fill($request->all());
         $ot->save();
 
         $cliente = Cliente::find($request->cliente_id);
         $cliente->update();
-        $cliente->save();
 
-        $item = Item::find($id);
-        $item->update();
-
-/*         $data=$request->all();
-        $lastid=Ot::create($data)->id;
-
-        if(count($request->nombreitem) > 0)
+        $cont=0;
+        while($cont < count($request->iditem))
         {
-        foreach($request->nombreitem as $item=>$v)
-            {
-            $data2=array(
-                'ot_id'=>$lastid,
-                'nombreitem'=>$request->nombreitem[$item],
-                'cantidaditem'=>$request->cantidaditem[$item],
-                'valoritem'=>$request->valoritem[$item],
-                'detalleitem'=>$request->detalleitem[$item],
-                'comentarioitem'=>$request->comentarioitem[$item]
+            $arrayitem=array(
+            'ot_id' => $id,
+            'nombreitem' => $request->nombreitem[$cont],
+            'cantidaditem' => $request->cantidaditem[$cont],
+            'valoritem' => $request->valoritem[$cont],
+            'detalleitem' => $request->detalleitem[$cont],
+            'comentarioitem' => $request->comentarioitem[$cont]
             );
-        Item::insert($data2);
-            }
-        } */
+            //$item->update();
+            $newitem = Item::find($request->iditem[$cont]);
+            $newitem->fill($arrayitem);
+            $newitem->save();
+
+            $cont = $cont + 1;
+        }
 
         flash('¡OT actualizada exitosamente!')->success();
         return redirect()->back();
@@ -131,3 +126,4 @@ class OtsController extends Controller
     }
 
 }
+

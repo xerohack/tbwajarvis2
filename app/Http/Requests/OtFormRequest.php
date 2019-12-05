@@ -14,13 +14,13 @@ class OtFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'file_archivo' => 'nullable|max:102400 '
+            'file_archivo' => 'nullable|max:10240 '
         ];
     }
     public function messages()
     {
         return[
-            'file_archivo,max' => 'El archivo no puede ser superior a 100MB'
+            'file_archivo,max' => 'El archivo no puede ser superior a 10MB'
         ];
     }
 }
