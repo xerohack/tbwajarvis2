@@ -12,9 +12,9 @@ class CreateItemsTable extends Migration
             $table->bigIncrements('id');
             $table->integer('ot_id');
             $table->string('nombreitem');
-            $table->string('cantidaditem');
-            $table->string('valoritem');
-            $table->longText('detalleitem');
+            $table->string('cantidaditem')->nullable();
+            $table->string('valoritem')->nullable();
+            $table->longText('detalleitem')->nullable();
             $table->longText('comentarioitem')->nullable();
             $table->timestamps();
 

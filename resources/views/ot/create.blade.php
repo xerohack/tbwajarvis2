@@ -123,16 +123,16 @@
                                                     <tr>
                                                         <th> </th>
                                                         <th>Nombre de Pieza</th>
-                                                        <th>Cantidad</th>
-                                                        <th>Valor</th>
+                                                        {{-- <th>Cantidad</th>
+                                                        <th>Valor</th> --}}
                                                         <th>Detalle Item</th>
                                                         <th>Seguimiento Item</th>
                                                     </tr>
                                                     <tr>
                                                         <td><button type="button" class="btn btn-danger remove borrar" onclick="eliminarFila()"><i class="glyphicon glyphicon-remove"></i></button></td>
                                                         <td>{!! Form::text('nombreitem[]', null, ['class' => 'form-control', 'placeholder' => 'Nombre item','required','maxlength' => 100]) !!}</td>
-                                                        <td>{!! Form::number('cantidaditem[]', null, ['class' => 'form-control', 'placeholder' => 'Cantidad','required','min'=>'0']) !!}</td>
-                                                        <td>{!! Form::number('valoritem[]', null, ['class' => 'form-control', 'placeholder' => 'Valor','required','min'=>'0']) !!}</td>
+                                                        {{-- <td>{!! Form::number('cantidaditem[]', null, ['class' => 'form-control', 'placeholder' => 'Cantidad','required','min'=>'0']) !!}</td>
+                                                        <td>{!! Form::number('valoritem[]', null, ['class' => 'form-control', 'placeholder' => 'Valor','required','min'=>'0']) !!}</td> --}}
                                                         <td>{!! Form::textarea('detalleitem[]', null, ['class' => 'form-control', 'placeholder' => 'Características del ítem','required','maxlength' => 10000,'rows'=>5 ]) !!}</td>
                                                         <td>{!! Form::textarea('comentarioitem[]', null, ['class' => 'form-control', 'placeholder' => 'Cambios realizados','maxlength' => 10000,'rows'=>5 ]) !!}</td>
                                                     </tr>
@@ -141,8 +141,8 @@
                                                     <tr>
                                                         <td></td>
                                                         <td></td>
-                                                        <td></td>
-                                                        <td></td>
+                                                        {{-- <td></td>
+                                                        <td></td> --}}
                                                         <td>(max 10.000 carácteres)</td>
                                                         <td>(max 10.000 carácteres)</td>
                                                     </tr>

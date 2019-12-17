@@ -53,7 +53,8 @@ class OtsController extends Controller
 
         $cliente->save();
         flash('¡OT creada exitosamente!')->success();
-        return redirect()->back();
+        //return redirect()->back();
+        return redirect()->route('ots.index');
     }
 
     public function show($id)
