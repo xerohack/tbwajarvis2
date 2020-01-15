@@ -7,7 +7,7 @@ class Clientes
     public function get()
     {
         $clientes = Cliente::get();
-        $clientesArray[''] = 'Seleccione cliente';
+        $clientesArray[''] = 'Seleccione';
         foreach ($clientes as $cliente) {
             $clientesArray[$cliente->id] = $cliente->nombreempresa;
         }

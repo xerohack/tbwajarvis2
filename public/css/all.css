@@ -1869,7 +1869,11 @@
         background-size: 240px 24px;
     }
 }
+input[name="bolfac"] {
+    margin-left: 50px;
+  }
 
 /* Css agregado por desarrollador */
+
 
 

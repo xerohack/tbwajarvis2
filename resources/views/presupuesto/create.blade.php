@@ -49,12 +49,26 @@
                                 </span>
                             @endif
                     </div>
+                    <div class="form-group">
+                        {!! Form::label('archivo','Adjuntar archivo') !!}
+                        {!! Form::file('file_archivo',['class' => 'form-control']) !!}
+                    </div>
                 </div> <!-- Cierra colummna 1-->
 
                 <div class="col-md-4">
                     <div class="form-group">
                         {!! Form::label('campana','Producto/Campaña') !!}
                         {!! Form::text('campana', null, ['class' => 'form-control', 'required', 'placeholder' => 'Ingrese Producto/Campaña','maxlength' => 100]) !!}
+                    </div>
+                    <div class="form-group">
+                        {!! Form::label('facturaboleta','Factura o Boleta') !!}
+                        <div class="form-control" style="border:none">
+                        {!! Form::radio('bolfac', 'Factura',true)!!}
+                        {!! Form::label('factura','Factura') !!}
+
+                        {!! Form::radio('bolfac', 'Boleta')!!}
+                        {!! Form::label('boleta','Boleta') !!}
+                        </div>
                     </div>
                 </div>
 
@@ -63,17 +77,14 @@
                         {!! Form::label('ejecutivores','Ejecutivo responsable') !!}
                         {!! Form::text('ejecutivores', null, ['class' => 'form-control', 'required', 'placeholder' => 'Ingrese ejecutivo responsable','maxlength' => 50]) !!}
                     </div>
+
                     <div class="form-group">
-                        {!! Form::label('archivo','Adjuntar archivo') !!}
-                        {!! Form::file('file_archivo',['class' => 'form-control']) !!}
-                    </div>
-                    <div class="form-group">
-                        {!! Form::checkbox('incluyeiva', 'value'/* , true */); !!}
-                        {!! Form::label('incluyeiva','Incluye IVA') !!}
-                    </div>
-                    <div class="form-group">
-                        {!! Form::checkbox('incluyecomision', 'value'/* , true */); !!}
-                        {!! Form::label('incluyecomision','Incluye comision agencia') !!}
+                        {!! Form::label('comision','Comision agencia') !!}
+                        <input type="checkbox" id="check" onchange="activarcomision(this.checked);" checked>
+                        <div class="form-control" style="border:none">
+                            {!! Form::number('comision', 0, ['placeholder' => '0 %','min'=>'0','max'=>'100' ]) !!}
+                            {!! Form::label('comision','% de comision') !!}
+                        </div>
                     </div>
                 </div>
 
@@ -87,7 +98,7 @@
                                     <thead>
                                         <tr>
                                             <th colspan="7">
-                                                <button type="button" class="btn btn-primary center-block" onclick="addRow()">Agregar ítem</button>
+                                                <button type="button" class="btn btn-primary center-block" onclick="addRowPre()">Agregar ítem</button>
                                             </th>
                                         </tr>
                                     </thead>
@@ -95,30 +106,45 @@
                                         <tr>
                                             <th> </th>
                                             <th>Nombre de Pieza</th>
-                                            <th>Cantidad</th>
-                                            <th>Valor</th>
-                                            <th>Detalle Item</th>
-                                            <th>Seguimiento Item</th>
                                         </tr>
                                         <tr>
                                             <td><button type="button" class="btn btn-danger remove borrar" onclick="eliminarFila()"><i class="glyphicon glyphicon-remove"></i></button></td>
                                             <td>{!! Form::text('nombreitem[]', null, ['class' => 'form-control', 'placeholder' => 'Nombre item','required','maxlength' => 100]) !!}</td>
-                                            <td>{!! Form::number('cantidaditem[]', null, ['class' => 'form-control', 'placeholder' => 'Cantidad','required','min'=>'0']) !!}</td>
-                                            <td>{!! Form::number('valoritem[]', null, ['class' => 'form-control', 'placeholder' => 'Valor','required','min'=>'0']) !!}</td>
-                                            <td>{!! Form::textarea('detalleitem[]', null, ['class' => 'form-control', 'placeholder' => 'Características del ítem','required','maxlength' => 10000,'rows'=>5 ]) !!}</td>
-                                            <td>{!! Form::textarea('comentarioitem[]', null, ['class' => 'form-control', 'placeholder' => 'Cambios realizados','required','maxlength' => 10000,'rows'=>5 ]) !!}</td>
                                         </tr>
                                     </tbody>
                                     <tfoot>
                                         <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td>(max 10.000 carácteres)</td>
-                                            <td>(max 10.000 carácteres)</td>
-                                        </tr>
+                                            <td><button type="button" class="btn btn-danger remove borrar" onclick="eliminarFila()"><i class="glyphicon glyphicon-remove"></i></button></td>
+                                            <td>
+                                                <div class="form-group">
+                                                    {!! Form::label('cliente','Proveedor') !!}
+                                                    <a href="" data-target="#addCli" data-toggle="modal">
+                                                        <button class="btn btn-primary btn-xs pull-right" style="margin-right:10px;" >Nuevo proveedor</button>
+                                                    </a>
+                                                        <select id="cliente" name="cliente_id" class="form-control{{ $errors->has('cliente_id') ? ' is-invalid' : '' }} selectpicker" data-live-search="true">
+                                                                    @foreach($clientes->get() as $index => $cliente)
+                                                                <option value="{{ $index }}" {{ old('cliente_id') == $index ? 'selected' : '' }}>
+                                                                    {{ $cliente }}
+                                                                </option>
+                                                            @endforeach
+                                                        </select>
 
+                                                        @if ($errors->has('cliente_id'))
+                                                            <span class="invalid-feedback" role="alert">
+                                                                <strong>{{ $errors->first('cliente_id') }}</strong>
+                                                            </span>
+                                                        @endif
+                                                </div>
+                                            </td>
+                                            <td>Valor
+                                                {!! Form::number('valorproveedor[]', null, ['class' => 'form-control', 'placeholder' => '$0','required','min'=>'0']) !!}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th colspan="7">
+                                                <button type="button" class="btn btn-primary center-block" onclick="addRowProv()">Agregar Proveedor</button>
+                                            </th>
+                                        </tr>
                                     </tfoot>
                                 </table>
                             </div>
@@ -132,19 +158,6 @@
                                     {!! Form::textarea('comentarioc', null, ['class' => 'form-control', 'placeholder' => 'Inserte una observacion','rows'=>5,'required','maxlength' => 10000 ]) !!}
                             </div>
                         </div> <!-- Cierra COMENTARIO OT-->
-
-                        <!-- Enviar a cliente para aprobación-->
-
-                        {{-- <div class="col-md-12" style="text-align:center;margin-top:30px;margin-bottom:30px">
-                            <div class="col-md-4"></div>
-                            <div class="col-md-4">
-                                <div class="form-group center" style="border-style:dotted;border-width:1px;border-radius:15px;background-color:#f4f4f4;">
-                                {!! Form::checkbox('enviarcliente', 'value', false, ['id' => 'checkboxcli']);!!}
-                                {!! Form::label('enviarcliente','Enviar a cliente para aprobación ') !!}
-                                </div>
-                            </div>
-                            <div class="col-md-4"></div>
-                        </div> --}}
 
                         <div class="form-group">
                             {!! Form::submit('Generar presupuesto', ['class' => 'btn btn-block btn-success btn-lg']) !!}
@@ -165,13 +178,29 @@
  @endsection
 
  @section('scriptselect')
-
+<!-- SCRIPT para seleccionar cliente -->
  <script>
     $(document).ready(function(){
         $('#cliente').on('change',function(){
             var cliente_id = $(this).val();
         }) ;
     });
+</script>
+
+<!-- SCRIPT para activar o desactivar la comision -->
+<script>
+    function activarcomision(value)
+    {
+        if(value==true)
+        {
+            // habilitamos
+            document.getElementById("comision").disabled=false;
+        }else if(value==false){
+            // deshabilitamos
+            document.getElementById("comision").disabled=true;
+            document.getElementById("comision").value=0;
+        }
+    }
 </script>
  @endsection
 

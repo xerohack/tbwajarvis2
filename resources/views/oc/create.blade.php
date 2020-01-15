@@ -52,6 +52,15 @@
                                 {!! Form::label('marcaoc','Por cuenta de (Marca)') !!}
                                 {!! Form::text('marcaoc', null, ['class' => 'form-control', 'required', 'placeholder' => 'Ingrese marca','maxlength' => 100]) !!}
                             </div>
+                            <div class="form-group">
+                                {!! Form::label('fechaentrega', 'Fecha de entrega') !!}
+                                <div class="form-group input-group date">
+                                    {!! Form::datetime('fechaentrega', null, ['class'=>'form-control', 'id'=>'datetimepicker'])!!}
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                            </div>
                         </div> <!-- Cierra colummna 1-->
 
                         <div class="col-md-3">
@@ -59,11 +68,15 @@
                                 {{-- {!! Form::label('seatiende','Atención Sr. (Contacto proveedor)') !!} --}}
                                 {!! Form::label('seatiende','Contacto proveedor:') !!}
                                 {{-- {!! Form::text('seatiende', null, ['class' => 'form-control', 'required', 'placeholder' => 'Se atiende a:','maxlength' => 100]) !!} --}}
-                                {!! Form::text('seatiende', null, ['class' => 'form-control', 'required', 'placeholder' => 'Contacto proveedor','maxlength' => 100]) !!}
+                                {!! Form::text('seatiende', null, ['class' => 'form-control', 'required', 'placeholder' => 'Contacto proveedor','maxlength' => 100, 'disabled']) !!}
                             </div>
                             <div class="form-group">
                                 {!! Form::label('producto','Producto cotizado') !!}
                                 {!! Form::text('producto', null, ['class' => 'form-control', 'required', 'placeholder' => 'Ingrese producto cotizado','maxlength' => 100]) !!}
+                            </div>
+                            <div class="form-group">
+                                {!! Form::label('lugarentrega','Lugar de entrega') !!}
+                                {!! Form::email('lugarentrega', null, ['class' => 'form-control', 'required', 'placeholder' => 'Ej: Oficina, agencia, etc']) !!}
                             </div>
                         </div>
 
@@ -94,7 +107,7 @@
                         <div class="col-md-12"><!-- DETALLE COMPRADOR-->
                             <h3 style="text-align:center">Informacion comprador</h3>
                             <div class="box-header with-border" style="background-color:#f4f4f4;border-radius: 15px;">
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <div class="form-group">
                                         {!! Form::label('cliente','Cliente') !!}
                                         <a href="" data-target="#addCli" data-toggle="modal">
@@ -122,24 +135,9 @@
                                         <input type="text" class="form-control" id="direccionempresa" name="direccionempresa" placeholder="EJ. Dirección 123"disabled>
                                         <input type="hidden" name="agregar" value="agregar">
                                     </div>
-                                </div>
-                                <div class="col-md-6">
                                     <div class="form-group">
                                         {!! Form::label('formapago','Forma de pago') !!}
                                         {!! Form::email('formapago', null, ['class' => 'form-control', 'required', 'placeholder' => 'Ej: 30 días']) !!}
-                                    </div>
-                                    <div class="form-group">
-                                        {!! Form::label('fechaentrega', 'Fecha de entrega') !!}
-                                        <div class="form-group input-group date">
-                                            {!! Form::datetime('fechaentrega', null, ['class'=>'form-control', 'id'=>'datetimepicker'])!!}
-                                            <span class="input-group-addon">
-                                                <span class="glyphicon glyphicon-calendar"></span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        {!! Form::label('lugarentrega','Lugar de entrega') !!}
-                                        {!! Form::email('lugarentrega', null, ['class' => 'form-control', 'required', 'placeholder' => 'Ej: Oficina agencia']) !!}
                                     </div>
                                 </div>
                             </div>
@@ -163,16 +161,16 @@
                                                         <tr>
                                                             <th> </th>
                                                             <th>Nombre de Pieza</th>
-                                                            <th>Cantidad</th>
-                                                            <th>Valor</th>
+                                                            {{-- <th>Cantidad</th>
+                                                            <th>Valor</th> --}}
                                                             <th>Detalle Item</th>
                                                             <th>Seguimiento Item</th>
                                                         </tr>
                                                         <tr>
                                                             <td><button type="button" class="btn btn-danger remove borrar" onclick="eliminarFila()"><i class="glyphicon glyphicon-remove"></i></button></td>
                                                             <td>{!! Form::text('nombreitem[]', null, ['class' => 'form-control', 'placeholder' => 'Nombre item','required','maxlength' => 100]) !!}</td>
-                                                            <td>{!! Form::number('cantidaditem[]', null, ['class' => 'form-control', 'placeholder' => 'Cantidad','required','min'=>'0']) !!}</td>
-                                                            <td>{!! Form::number('valoritem[]', null, ['class' => 'form-control', 'placeholder' => 'Valor','required','min'=>'0']) !!}</td>
+{{--                                                             <td>{!! Form::number('cantidaditem[]', null, ['class' => 'form-control', 'placeholder' => 'Cantidad','required','min'=>'0']) !!}</td>
+                                                            <td>{!! Form::number('valoritem[]', null, ['class' => 'form-control', 'placeholder' => 'Valor','required','min'=>'0']) !!}</td> --}}
                                                             <td>{!! Form::textarea('detalleitem[]', null, ['class' => 'form-control', 'placeholder' => 'Características del ítem','required','maxlength' => 10000,'rows'=>5 ]) !!}</td>
                                                             <td>{!! Form::textarea('comentarioitem[]', null, ['class' => 'form-control', 'placeholder' => 'Cambios realizados','required','maxlength' => 10000,'rows'=>5 ]) !!}</td>
                                                         </tr>
@@ -181,8 +179,8 @@
                                                         <tr>
                                                             <td></td>
                                                             <td></td>
-                                                            <td></td>
-                                                            <td></td>
+                                                            {{-- <td></td>
+                                                            <td></td> --}}
                                                             <td>(max 10.000 carácteres)</td>
                                                             <td>(max 10.000 carácteres)</td>
                                                         </tr>
@@ -200,13 +198,13 @@
                                     </div>
                                 </div> <!-- Cierra COMENTARIO OT-->
                             <div class="col-md-4" style="margin-top:70px">
-                                <div class="form-group" style="border-width:1px;border-radius:10px;background-color:#f4f4f4">
-                                    {!! Form::label('enviarcliente','Enviar a cliente') !!}
-                                    {!! Form::checkbox('enviarcliente', 'value'/* , true */); !!}
-                                </div>
-                                <div class="form-group" style="border-width:1px;border-radius:10px;background-color:#f4f4f4;">
-                                    {!! Form::label('comisionagencia','Comision agencia') !!}
-                                    {!! Form::number('comisionagencia', null,['placeholder' => 'Cantidad','min'=>'0']) !!}
+                                <div class="form-group">
+                                    {!! Form::label('comision','Comision agencia') !!}
+                                    <input type="checkbox" id="check" onchange="activarcomision(this.checked);" checked>
+                                    <div class="form-control" style="border:none">
+                                        {!! Form::number('comision', 0, ['placeholder' => '0 %','min'=>'0','max'=>'100' ]) !!}
+                                        {!! Form::label('comision','% de comision') !!}
+                                    </div>
                                 </div>
                             </div>
                                 <div class="col-md-12" style="margin-top:30px;margin-bottom:50px"><!-- IMPORTANTE OT-->
@@ -249,6 +247,22 @@
             var cliente_id = $(this).val();
         }) ;
     });
+</script>
+
+<!-- SCRIPT para activar o desactivar la comision -->
+<script>
+    function activarcomision(value)
+    {
+        if(value==true)
+        {
+            // habilitamos
+            document.getElementById("comision").disabled=false;
+        }else if(value==false){
+            // deshabilitamos
+            document.getElementById("comision").disabled=true;
+            document.getElementById("comision").value=0;
+        }
+    }
 </script>
  @endsection
 

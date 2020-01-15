@@ -17,7 +17,9 @@ class Cliente extends Model
         'nombreempresa',
         'rutempresa',
         'giroempresa',
-        'direccionempresa'
+        'direccionempresa',
+        'tipouser'
+
     ];
 
     public function ots(){

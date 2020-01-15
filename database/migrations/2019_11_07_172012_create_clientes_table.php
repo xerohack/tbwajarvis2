@@ -19,6 +19,7 @@ class CreateClientesTable extends Migration
             $table->string('rutempresa');
             $table->string('giroempresa');
             $table->string('direccionempresa');
+            $table->enum('tipouser', ['cliente','proveedor'])->nullable();
             $table->timestamps();
         });
     }
