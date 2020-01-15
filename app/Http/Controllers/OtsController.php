@@ -42,8 +42,8 @@ class OtsController extends Controller
             $data2=array(
                 'ot_id'=>$lastid,
                 'nombreitem'=>$request->nombreitem[$item],
-                'cantidaditem'=>$request->cantidaditem[$item],
-                'valoritem'=>$request->valoritem[$item],
+                /* 'cantidaditem'=>$request->cantidaditem[$item],
+                'valoritem'=>$request->valoritem[$item], */
                 'detalleitem'=>$request->detalleitem[$item],
                 'comentarioitem'=>$request->comentarioitem[$item]
             );
@@ -91,8 +91,8 @@ class OtsController extends Controller
             $arrayitem=array(
             'ot_id' => $id,
             'nombreitem' => $request->nombreitem[$cont],
-            'cantidaditem' => $request->cantidaditem[$cont],
-            'valoritem' => $request->valoritem[$cont],
+            /* 'cantidaditem' => $request->cantidaditem[$cont],
+            'valoritem' => $request->valoritem[$cont], */
             'detalleitem' => $request->detalleitem[$cont],
             'comentarioitem' => $request->comentarioitem[$cont]
             );

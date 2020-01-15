@@ -66,6 +66,15 @@
                 <li><a href="{{ route('presupuesto.index')}}"><i class='fa fa-eye'></i> <span>Ver presupuestos</span></a></li>
                 </ul>
             </li>
+
+            <li class="treeview">
+                <a href="#"><i class='fa fa-info'></i> <span>Informes</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                <li><a href="#"><i class='fa fa-file-text-o'></i> <span>Ordenes de trabajo</span></a></li>
+                <li><a href="#"><i class='fa fa-file-powerpoint-o'></i> <span>Presupuestos</span></a></li>
+                <li><a href="#"><i class='fa fa-file-text'></i> <span>Ordenes de compra</span></a></li>
+                </ul>
+            </li>
         </ul><!-- /.sidebar-menu -->
     </section>
     <!-- /.sidebar -->

@@ -20,6 +20,7 @@ class Ot extends Model
         'url',
         'file_archivo',
         'comentariot',
+        'facturable',
         'total',
         'estado',
         'condicion'

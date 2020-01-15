@@ -36,8 +36,8 @@
     $(function () {
         $.datetimepicker.setLocale('es');
         $('#datetimepicker').datetimepicker({
+            format: 'd/m/y H:m',
             minDate: 0,  // disable past date
-            //minTime: 0, // disable past time
         });
     });
 </script>

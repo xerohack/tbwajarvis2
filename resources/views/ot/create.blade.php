@@ -50,7 +50,6 @@
                                             <strong>{{ $errors->first('cliente_id') }}</strong>
                                         </span>
                                     @endif
-
                             </div>
                             <div class="form-group">
                                 {!! Form::label('tema','Tema') !!}
@@ -101,9 +100,20 @@
                         <div class="col-md-12"><!-- COMENTARIO OT-->
                             <div class="box-header with-border" style="background-color:#f4f4f4;border-radius: 15px;">
                                     {!! Form::label('comentariot','Comentario (Opcional)') !!}
-                                    {!! Form::textarea('comentariot', null,['class'=>'form-control','placeholder'=>'Inserte un comentario','maxlength'=>10000,'rows'=>5 ]) !!}
+                                    {!! Form::textarea('comentariot', null,['class'=>'form-control','placeholder'=>'Inserte un comentario','maxlength'=>10000,'rows'=>2 ]) !!}
                             </div>
                         </div> <!-- Cierra COMENTARIO OT-->
+
+                        <div class="col-md-12" style="text-align:center;margin-top:30px;margin-bottom:30px">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-4">
+                                <div class="form-group center" style="border-width:1px;border-radius:15px;background-color:#f4f4f4;">
+                                {!! Form::checkbox('facturable', 'value', true, ['id' => 'checkboxfac']);!!}
+                                {!! Form::label('facturable','Facturable ') !!}
+                                </div>
+                            </div>
+                            <div class="col-md-4"></div>
+                        </div>
 
                         <div class="box-body"><!-- /.box-body2 -->
                             <div class="col-md-12">
