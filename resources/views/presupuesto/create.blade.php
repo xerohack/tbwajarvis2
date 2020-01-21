@@ -97,52 +97,27 @@
                                 <table class="table table-bordered table-responsive" style="background:#eee" id="tablaitem">
                                     <thead>
                                         <tr>
-                                            <th colspan="7">
+                                            <th colspan="7" style="background-color:#222d32">
                                                 <button type="button" class="btn btn-primary center-block" onclick="addRowPre()">Agregar ítem</button>
                                             </th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <th> </th>
-                                            <th>Nombre de Pieza</th>
+                                            <td width="10"><button type="button" class="btn btn-danger remove borrar" onclick="eliminarFila()" disabled="true"><i class="glyphicon glyphicon-remove"></i></button></td>
+                                            <td colspan="3"> Item {!! Form::text('nombreitem[]', null, ['class' => 'form-control', 'placeholder' => 'Detalle item','required','maxlength' => 100]) !!}</td>
                                         </tr>
                                         <tr>
-                                            <td><button type="button" class="btn btn-danger remove borrar" onclick="eliminarFila()"><i class="glyphicon glyphicon-remove"></i></button></td>
-                                            <td>{!! Form::text('nombreitem[]', null, ['class' => 'form-control', 'placeholder' => 'Nombre item','required','maxlength' => 100]) !!}</td>
+                                            <td></td>
+                                            <td width="70%">Proveedor {!! Form::text('nombreproveedor[]', null, ['class' => 'form-control', 'placeholder' => 'Nombre proveedor','required','maxlength' => 100]) !!}</td>
+                                            <td>Valor{!! Form::number('valorproveedor[]', null, ['class' => 'form-control', 'placeholder' => '$0','required','min'=>'0']) !!}</td>
+                                            <td width="10"><button type="button" class="btn-xs btn-danger remove borrar" onclick="eliminarFila()" disabled="true"><i class="glyphicon glyphicon-remove"></i></button></td>
                                         </tr>
                                     </tbody>
                                     <tfoot>
                                         <tr>
-                                            <td><button type="button" class="btn btn-danger remove borrar" onclick="eliminarFila()"><i class="glyphicon glyphicon-remove"></i></button></td>
-                                            <td>
-                                                <div class="form-group">
-                                                    {!! Form::label('cliente','Proveedor') !!}
-                                                    <a href="" data-target="#addCli" data-toggle="modal">
-                                                        <button class="btn btn-primary btn-xs pull-right" style="margin-right:10px;" >Nuevo proveedor</button>
-                                                    </a>
-                                                        <select id="cliente" name="cliente_id" class="form-control{{ $errors->has('cliente_id') ? ' is-invalid' : '' }} selectpicker" data-live-search="true">
-                                                                    @foreach($clientes->get() as $index => $cliente)
-                                                                <option value="{{ $index }}" {{ old('cliente_id') == $index ? 'selected' : '' }}>
-                                                                    {{ $cliente }}
-                                                                </option>
-                                                            @endforeach
-                                                        </select>
-
-                                                        @if ($errors->has('cliente_id'))
-                                                            <span class="invalid-feedback" role="alert">
-                                                                <strong>{{ $errors->first('cliente_id') }}</strong>
-                                                            </span>
-                                                        @endif
-                                                </div>
-                                            </td>
-                                            <td>Valor
-                                                {!! Form::number('valorproveedor[]', null, ['class' => 'form-control', 'placeholder' => '$0','required','min'=>'0']) !!}
-                                            </td>
-                                        </tr>
-                                        <tr>
                                             <th colspan="7">
-                                                <button type="button" class="btn btn-primary center-block" onclick="addRowProv()">Agregar Proveedor</button>
+                                                <button type="button" class="btn btn-warning center-block" onclick="addRowPreprov()">Agregar Proveedor</button>
                                             </th>
                                         </tr>
                                     </tfoot>

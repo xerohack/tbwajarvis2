@@ -21,7 +21,7 @@ class CreateOtsTable extends Migration
             $table->string('url')->nullable();
             $table->string('file_archivo')->nullable();
             $table->longText('comentariot')->nullable();
-            $table->boolean('facturable')->default(1);
+            $table->boolean('facturable')->default(0);
             $table->string('total')->nullable();
             $table->string('estado')->nullable();
             $table->boolean('condicion')->default(1);
